@@ -373,17 +373,17 @@
         "step": 4,
         "unit": "px",
         "label": "t:labels.font_size_desktop",
-        "default": 64
+        "default": 44
       },
       {
         "type": "range",
         "id": "type_heading_1_size_tablet",
-        "min": 40,
+        "min": 36,
         "max": 80,
         "step": 2,
         "unit": "px",
         "label": "t:labels.font_size_tablet",
-        "default": 52
+        "default": 36
       },
       {
         "type": "range",
@@ -393,7 +393,7 @@
         "step": 2,
         "unit": "px",
         "label": "t:labels.font_size_mobile",
-        "default": 40
+        "default": 30
       },
       {
         "type": "select",
@@ -429,7 +429,7 @@
         "step": 4,
         "unit": "px",
         "label": "t:labels.font_size_desktop",
-        "default": 40
+        "default": 32
       },
       {
         "type": "range",
@@ -439,7 +439,7 @@
         "step": 2,
         "unit": "px",
         "label": "t:labels.font_size_tablet",
-        "default": 34
+        "default": 30
       },
       {
         "type": "range",
@@ -449,7 +449,7 @@
         "step": 2,
         "unit": "px",
         "label": "t:labels.font_size_mobile",
-        "default": 30
+        "default": 26
       },
       {
         "type": "select",
@@ -485,7 +485,7 @@
         "step": 4,
         "unit": "px",
         "label": "t:labels.font_size_desktop",
-        "default": 32
+        "default": 28
       },
       {
         "type": "range",
@@ -495,7 +495,7 @@
         "step": 2,
         "unit": "px",
         "label": "t:labels.font_size_tablet",
-        "default": 22
+        "default": 24
       },
       {
         "type": "range",
@@ -505,7 +505,7 @@
         "step": 2,
         "unit": "px",
         "label": "t:labels.font_size_mobile",
-        "default": 20
+        "default": 22
       },
       {
         "type": "select",
@@ -536,22 +536,22 @@
       {
         "type": "range",
         "id": "type_heading_4_size_desktop",
-        "min": 24,
+        "min": 18,
         "max": 48,
-        "step": 4,
+        "step": 2,
         "unit": "px",
         "label": "t:labels.font_size_desktop",
-        "default": 24
+        "default": 18
       },
       {
         "type": "range",
         "id": "type_heading_4_size_tablet",
-        "min": 24,
+        "min": 18,
         "max": 48,
-        "step": 4,
+        "step": 2,
         "unit": "px",
         "label": "Tablet font size",
-        "default": 24
+        "default": 18
       },
       {
         "type": "range",
@@ -592,12 +592,12 @@
       {
         "type": "range",
         "id": "type_heading_5_size_desktop",
-        "min": 18,
+        "min": 16,
         "max": 36,
         "step": 2,
         "unit": "px",
         "label": "t:labels.font_size_desktop",
-        "default": 18
+        "default": 16
       },
       {
         "type": "range",
@@ -607,7 +607,7 @@
         "step": 1,
         "unit": "px",
         "label": "t:labels.font_size_tablet",
-        "default": 15
+        "default": 16
       },
       {
         "type": "range",
@@ -617,7 +617,7 @@
         "step": 1,
         "unit": "px",
         "label": "t:labels.font_size_mobile",
-        "default": 15
+        "default": 16
       },
       {
         "type": "select",

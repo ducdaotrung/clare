@@ -1,0 +1,42 @@
+{% liquid
+  assign category_image = block.settings.image | default: block.settings.collection.featured_image
+  assign category_scheme = block.settings.color_scheme | default: 'scheme-3'
+  if block.settings.color_scheme.id != blank
+    assign category_scheme = block.settings.color_scheme.id
+  endif
+%}
+<div class="editorial-category color-scheme section-color-scope {{ category_scheme | handleize }}" {{ block.shopify_attributes }}>
+  <div class="editorial-category__media">
+    {% render 'image', image: category_image, width: 1200, sizes: '(min-width: 768px) 25vw, 50vw', placeholder: 'collection-apparel-1' %}
+  </div>
+  <div class="editorial-category__content align-content">
+    {% content_for 'blocks' %}
+  </div>
+</div>
+{% stylesheet %}
+  .editorial-category { position: relative; min-width: 0; overflow: hidden; isolation: isolate; aspect-ratio: 4 / 5; background: var(--background-color); }
+  .editorial-category__media, .editorial-category__media > *, .editorial-category__media img, .editorial-category__media svg { position: absolute; inset: 0; display: block; width: 100%; height: 100%; object-fit: cover; }
+  .editorial-category__media::after { content: ''; position: absolute; inset: 0; background: linear-gradient(transparent, rgb(0 0 0 / 25%)); }
+  .editorial-category__content { --flex-align: center; position: absolute; inset: 0; justify-content: center; gap: var(--space-4, 16px); padding: var(--space-4, 16px); }
+  .editorial-category__content > * { max-width: 100%; }
+{% endstylesheet %}
+{% schema %}
+{
+  "name": "Editorial category",
+  "tag": null,
+  "blocks": [{ "type": "heading" }, { "type": "text" }, { "type": "button" }],
+  "settings": [
+    { "type": "collection", "id": "collection", "label": "Collection image fallback" },
+    { "type": "image_picker", "id": "image", "label": "Image" },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-3" }
+  ],
+  "presets": [{
+    "name": "Editorial category",
+    "category": "t:general.collections",
+    "blocks": [
+      { "type": "heading", "settings": { "text": "<p>SHOP THE EDIT</p>", "html_tag": "h3", "heading_size": "sm" } },
+      { "type": "button", "settings": { "button_label": "SHOP NOW", "button_link": "shopify://collections/all", "button_style": "primary" } }
+    ]
+  }]
+}
+{% endschema %}

@@ -138,7 +138,7 @@
   endif
 
   assign collection_tab_deferred = false
-  if section.index != nil and request.design_mode != true and collection_tab_is_initial == false
+  if section.index != nil and request.design_mode != true and collection_tab_is_initial == false and section.settings.load_all_tabs != true
     assign collection_tab_deferred = true
   endif
 %}
