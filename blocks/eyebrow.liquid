@@ -60,6 +60,7 @@
 %}
 
 {% capture eyebrow_style %}
+  {% if block.settings.font_size == 'custom' %}--eyebrow-custom-font-size: {{ block.settings.custom_font_size | default: 16 }}px;{% endif %}
   {% if border_thickness != 0 %}--eyebrow-border-width: {{ border_thickness }}px;{% endif %}
   {% if block.settings.corner_radius != blank and block.settings.corner_radius != 'square' %}--eyebrow-radius: {{ eyebrow_radius }};{% endif %}
   {% if padding_top != 0 %}--eyebrow-padding-top: {{ padding_top }}px;{% endif %}
@@ -78,7 +79,7 @@
 
 {% if block.settings.text != blank or request.design_mode %}
   <div
-    class="{{ eyebrow_class }}"
+    class="{{ eyebrow_class }}{% if block.settings.font_size == 'custom' %} eyebrow-custom{% endif %}"
     {% if eyebrow_style != blank %}style="{{ eyebrow_style }}"{% endif %}
     {% if block_plain_text == blank %}data-content-empty{% endif %}
     {{ block.shopify_attributes }}
@@ -165,6 +166,27 @@
       "type": "richtext",
       "id": "text",
       "label": "t:labels.text"
+    },
+    {
+      "type": "select",
+      "id": "font_size",
+      "label": "Font size",
+      "options": [
+        { "value": "display", "label": "Display" },
+        { "value": "custom", "label": "Custom" }
+      ],
+      "default": "display"
+    },
+    {
+      "type": "range",
+      "id": "custom_font_size",
+      "label": "Custom font size",
+      "min": 10,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 16,
+      "visible_if": "{{ block.settings.font_size == 'custom' }}"
     },
     {
       "type": "color",

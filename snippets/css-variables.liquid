@@ -48,6 +48,11 @@
   assign default_tertiary_hover_text = default_accent
   assign default_tertiary_hover_border = 'transparent'
 
+  assign default_primary_background = settings.button_primary_background_color | default: default_primary_background
+  assign default_primary_text = settings.button_primary_text_color | default: default_primary_text
+  assign default_secondary_background = settings.button_secondary_background_color | default: default_secondary_background
+  assign default_secondary_text = settings.button_secondary_text_color | default: default_secondary_text
+
   for scheme in settings.color_schemes
     if scheme.id == default_scheme_id
       assign default_background = scheme.settings.background | default: default_background
@@ -164,11 +169,13 @@
   assign heading_3_size_tablet = settings.type_heading_3_size_tablet | default: 22
   assign heading_3_size_mobile = settings.type_heading_3_size_mobile | default: 20
   assign heading_4_size_desktop = settings.type_heading_4_size_desktop | default: 24
+  assign heading_4_size_tablet = settings.type_heading_4_size_tablet | default: heading_4_size_desktop
   assign heading_4_size_mobile = settings.type_heading_4_size_mobile | default: 18
   assign heading_5_size_desktop = settings.type_heading_5_size_desktop | default: 18
   assign heading_5_size_tablet = settings.type_heading_5_size_tablet | default: 15
   assign heading_5_size_mobile = settings.type_heading_5_size_mobile | default: 15
   assign heading_6_size_desktop = settings.type_heading_6_size_desktop | default: 16
+  assign heading_6_size_tablet = settings.type_heading_6_size_tablet | default: heading_6_size_desktop
   assign heading_6_size_mobile = settings.type_heading_6_size_mobile | default: 14
 
   assign heading_1_line_height = '1.2'
@@ -286,6 +293,9 @@
     when 'extra_loose'
       assign eyebrow_letter_spacing = '0.2em'
   endcase
+  if settings.type_eyebrow_letter_spacing_px != blank
+    assign eyebrow_letter_spacing = settings.type_eyebrow_letter_spacing_px | append: 'px'
+  endif
   assign eyebrow_text_case = 'none'
   if settings.type_eyebrow_case == 'uppercase'
     assign eyebrow_text_case = 'uppercase'
@@ -935,7 +945,7 @@
     --font-eyebrow-line-height: {{ eyebrow_line_height }};
     --font-eyebrow-letter-spacing: {{ eyebrow_letter_spacing }};
     --font-eyebrow-text-transform: {{ eyebrow_text_case }};
-    --font-eyebrow-weight: 500;
+    --font-eyebrow-weight: {{ settings.type_eyebrow_weight | default: 500 }};
     --type-body-size: var(--font-body-md);
     --type-body-leading: var(--font-body-line-height);
     --type-heading-1-size: var(--font-heading-display);
@@ -1188,9 +1198,9 @@
 
   @media (min-width: 768px) and (max-width: 1149.98px) {
     :root {
-      --font-heading-xs: {{ heading_6_size_desktop }}px;
+      --font-heading-xs: {{ heading_6_size_tablet }}px;
       --font-heading-sm: {{ heading_5_size_tablet }}px;
-      --font-heading-md: {{ heading_4_size_desktop }}px;
+      --font-heading-md: {{ heading_4_size_tablet }}px;
       --font-heading-lg: {{ heading_3_size_tablet }}px;
       --font-heading-xl: {{ heading_2_size_tablet }}px;
       --font-heading-display: {{ heading_1_size_tablet }}px;
@@ -1291,18 +1301,4 @@
     }
   {% endfor %}
 
-  .btn {
-    {% if settings.button_primary_background_color != blank %}
-      --button-primary-background: {{ settings.button_primary_background_color }};
-    {% endif %}
-    {% if settings.button_primary_text_color != blank %}
-      --button-primary-text: {{ settings.button_primary_text_color }};
-    {% endif %}
-    {% if settings.button_secondary_background_color != blank %}
-      --button-secondary-background: {{ settings.button_secondary_background_color }};
-    {% endif %}
-    {% if settings.button_secondary_text_color != blank %}
-      --button-secondary-text: {{ settings.button_secondary_text_color }};
-    {% endif %}
-  }
 {% endstyle %}

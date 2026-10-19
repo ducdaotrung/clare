@@ -3242,3 +3242,28 @@ legend {
 [data-component-reveal].reveal-pending { opacity:0; }
 body[data-block-animations="false"] .reveal-pending { opacity:1!important; }
 @media (prefers-reduced-motion:reduce) { .reveal-pending { opacity:1!important; } }
+
+/* Keep rich text leaves tied to their selected typography role. */
+:is(.heading-text, .body-text, .eyebrow-text) :where(p, span, a, li, div, h1, h2, h3, h4, h5, h6) {
+  font-family: inherit;
+  font-style: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  color: inherit;
+}
+.body-display { font-size: var(--font-body-md); }
+.body-custom { font-size: var(--text-custom-font-size, var(--font-body-md)); }
+.eyebrow-text.eyebrow-custom { font-size: var(--eyebrow-custom-font-size, var(--font-eyebrow-size)); }
+.btn :where(.btn__label, .btn__text, [data-description-toggle-label]) {
+  font-family: inherit;
+  font-style: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  color: inherit;
+}
