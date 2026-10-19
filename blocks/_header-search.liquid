@@ -48,7 +48,7 @@
     >
     <button class="btn btn--unstyled header-search__submit" type="submit" aria-label="{{ search_label | escape }}">
       <span class="icon" aria-hidden="true">
-        {% render 'icon', icon: 'magnifying-glass', bare: true %}
+        {% render 'header-action-icon', icon: 'search' %}
       </span>
     </button>
   </form>
@@ -61,7 +61,7 @@
     data-search-overlay-open
   >
     <span class="icon" aria-hidden="true">
-      {% render 'icon', icon: 'magnifying-glass', bare: true %}
+      {% render 'header-action-icon', icon: 'search' %}
     </span>
   </button>
 {% else %}
@@ -75,13 +75,14 @@
     {{ block.shopify_attributes }}
   >
     <span class="icon" aria-hidden="true">
-      {% render 'icon', icon: 'magnifying-glass', bare: true %}
+      {% render 'header-action-icon', icon: 'search' %}
     </span>
     {% unless search_type == 'icon' %}<span class="header-action__label {{ search_typography_class }}">{{ search_label | escape }}</span>{% endunless %}
   </button>
 {% endif %}
 
 {% stylesheet %}
+  .header-search .icon { --header-icon-size: 24px; }
   .header-search {
     display: inline-flex;
     flex: 0 1 auto;

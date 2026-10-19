@@ -27,8 +27,12 @@ class SwatchesVariantPickerComponent extends HTMLElement {
   }
 
   handleChange(event) {
-    const input = event.target;
-    if (!(input instanceof HTMLInputElement) || !input.matches('[data-product-card-swatch]')) return;
+    const control = event.target;
+    const isSwatch = control instanceof HTMLInputElement && control.matches('[data-product-card-swatch]');
+    const isDropdown = typeof HTMLSelectElement !== 'undefined' && control instanceof HTMLSelectElement && control.matches('[data-product-card-variant-select]');
+    if (!isSwatch && !isDropdown) return;
+    const input = isDropdown ? control.selectedOptions[0] : control;
+    if (!input) return;
 
     const card = this.card;
     const variantId = input.dataset.variantId;

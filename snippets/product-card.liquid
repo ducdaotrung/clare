@@ -25,20 +25,14 @@
     assign card_style = 'standard'
   endunless
 
-  assign card_ratio = settings.product_card_ratio | default: 'natural'
-  unless card_ratio == 'natural' or card_ratio == 'square' or card_ratio == 'portrait' or card_ratio == 'landscape'
-    assign card_ratio = 'natural'
-  endunless
+  assign card_ratio = 'portrait'
 
   assign card_alignment = settings.product_card_alignment | default: 'left'
   unless card_alignment == 'left' or card_alignment == 'center' or card_alignment == 'right'
     assign card_alignment = 'left'
   endunless
 
-  assign title_line_limit = settings.product_card_title_line_limit | default: 'none'
-  unless title_line_limit == 'none' or title_line_limit == '1' or title_line_limit == '2' or title_line_limit == '3'
-    assign title_line_limit = 'none'
-  endunless
+  assign title_line_limit = '1'
 
   assign card_color_type = color_type | default: 'inherit'
   unless card_color_type == 'inherit' or card_color_type == 'color_scheme'

@@ -330,6 +330,14 @@
   .collection-tabs__layout .tab-layout:not(:has([data-tab-navigation] > *)) {
     display: none;
   }
+  .section-collection-tabs .tab-layout .tab-layout__navigation {
+    gap: var(--tab-layout-gap-desktop, 16px);
+  }
+  @media (max-width: 767.98px) {
+    .section-collection-tabs .tab-layout .tab-layout__navigation {
+      gap: var(--tab-layout-gap-mobile, var(--tab-layout-gap-desktop, 16px));
+    }
+  }
 {% endstylesheet %}
 
 {% schema %}

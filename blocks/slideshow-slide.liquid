@@ -28,6 +28,8 @@
   endcomment
   assign slide_mobile_height_preset = section.settings.mobile_height | default: 'small'
   case slide_mobile_height_preset
+    when 'custom'
+      assign slide_mobile_height = section.settings.mobile_height_custom | default: 440 | at_least: 1 | round
     when 'extra_small'
       assign slide_mobile_height = 320
     when 'small'

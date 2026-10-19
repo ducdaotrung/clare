@@ -213,4 +213,6 @@
     </form>
     {{ swatch_variant_templates }}
   </swatches-variant-picker-component>
+{% elsif swatch_option == blank and product.has_only_default_variant == false %}
+  {% render 'product-card-variant-dropdown', product: product, image_width: image_width, image_height: image_height %}
 {% endif %}

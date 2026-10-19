@@ -3267,3 +3267,61 @@ body[data-block-animations="false"] .reveal-pending { opacity:1!important; }
   text-transform: inherit;
   color: inherit;
 }
+
+/* Product Card presentation. Scoped to cards; product-page controls stay independent. */
+.product-card .product-card__media { aspect-ratio: 4 / 5; }
+.product-card .product-card__content { padding-block-start: 20px; gap: 0; }
+.product-card .product-card__details { gap: 0; }
+.product-card .product-card__title {
+  display: block;
+  margin-bottom: 2px;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: .96px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.product-card .product-card__title-link { display: block; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.product-card .product-card__price {
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 2px;
+  line-height: 20px;
+  margin-bottom: 8px;
+}
+.product-card .product-card__price .price__value { font-size: inherit; font-weight: inherit; line-height: inherit; }
+.product-card .product-card__swatches { gap: 8px; --swatch-control-width: 20px; --swatch-control-ratio: 1; }
+.product-card .product-card__swatch-label:has(.swatch--color) { width: 20px; height: 20px; border-radius: 50%; font-size: 0; }
+.product-card .product-card__swatch-label.swatch-control .swatch--color {
+  width: 20px;
+  height: 20px;
+  aspect-ratio: 1;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  font-size: 0;
+}
+.product-card .product-card__swatch-label.swatch-control .swatch--color::before { border: 0; }
+.product-card .product-card__swatch-label:has(input:checked) .swatch--color { outline: 1px solid var(--body-color); outline-offset: 2px; }
+.product-card__variant-dropdown { position: relative; height: 20px; color: #808080; }
+.product-card__variant-dropdown select {
+  display: block;
+  width: 100%;
+  height: 20px;
+  min-height: 20px;
+  padding: 0 19px 0 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: inherit;
+  font-family: inherit;
+  font-size: 12px;
+  line-height: 20px;
+  appearance: none;
+  cursor: pointer;
+}
+.product-card__variant-dropdown select:focus-visible { outline: 2px solid var(--input-focus-color, currentColor); outline-offset: 2px; }
+.product-card__variant-chevron { position: absolute; right: 0; top: 50%; display: flex; width: 11px; height: 11px; transform: translateY(-50%); pointer-events: none; }
+.product-card__variant-chevron svg { width: 11px; height: 11px; }

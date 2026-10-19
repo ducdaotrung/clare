@@ -259,6 +259,7 @@
   </aside>
 
 {% stylesheet %}
+  .header-menu .header-menu__top-link-label.link-underline { padding-bottom: 0; }
   .header-menu {
     display: flex;
     flex: 0 1 auto;
@@ -1132,6 +1133,17 @@
     }
   }
 
+  .header-menu__list > .header-menu__item > .header-menu__link,
+  .header-menu__list > .header-menu__item > details > .header-menu__summary,
+  .header__mobile-drawer-list > .header__mobile-drawer-item > .header__mobile-drawer-link,
+  .header__mobile-drawer-list > .header__mobile-drawer-item > details > summary {
+    font-family: 'Outfit', sans-serif;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%;
+    letter-spacing: 2px;
+  }
 {% endstylesheet %}
 
 {% schema %}
