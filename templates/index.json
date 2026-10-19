@@ -1,25 +1,26 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "summer_slideshow": {
       "type": "slideshow",
-      "settings": {
-        "width": "full_bleed",
-        "desktop_height": "adapt",
-        "mobile_height": "small",
-        "autoplay": false,
-        "show_navigation": false,
-        "show_pagination": false
-      },
       "blocks": {
         "item_1": {
           "type": "slideshow-slide",
           "settings": {
             "layout": "classic",
+            "show_overlay": true,
+            "overlay_color": "#0000001a",
             "desktop_position": "center_center",
             "mobile_position": "center_center",
-            "color_scheme": "scheme-3",
-            "show_overlay": true,
-            "overlay_color": "#0000001a"
+            "color_scheme": "scheme-3"
           },
           "blocks": {
             "item_2": {
@@ -54,11 +55,119 @@
       },
       "block_order": [
         "item_1"
-      ]
+      ],
+      "settings": {
+        "width": "full_bleed",
+        "desktop_height": "adapt",
+        "mobile_height": "small",
+        "autoplay": false,
+        "show_navigation": false,
+        "show_pagination": false
+      }
     },
     "new_arrivals": {
       "type": "collection-tabs-editorial",
+      "blocks": {
+        "item_5": {
+          "type": "header",
+          "settings": {
+            "width": "fill",
+            "alignment": "center"
+          },
+          "blocks": {
+            "item_6": {
+              "type": "heading",
+              "settings": {
+                "text": "<p>NEW ARRIVALS</p>",
+                "heading_size": "md",
+                "html_tag": "h2"
+              }
+            }
+          },
+          "block_order": [
+            "item_6"
+          ]
+        },
+        "item_7": {
+          "type": "tab-layout",
+          "settings": {
+            "style": "underline",
+            "gap_desktop": 24,
+            "gap_mobile": 16,
+            "font": "body",
+            "heading_size": "sm"
+          }
+        },
+        "item_8": {
+          "type": "collection-tab",
+          "settings": {
+            "label": "BEST SELLERS",
+            "collection": ""
+          },
+          "blocks": {
+            "product-card": {
+              "type": "product-card",
+              "static": true,
+              "settings": {
+                "color_type": "inherit",
+                "color_scheme": "scheme-1"
+              }
+            }
+          }
+        },
+        "item_9": {
+          "type": "collection-tab",
+          "settings": {
+            "label": "NEW IN",
+            "collection": ""
+          },
+          "blocks": {
+            "product-card": {
+              "type": "product-card",
+              "static": true,
+              "settings": {
+                "color_type": "inherit",
+                "color_scheme": "scheme-1"
+              }
+            }
+          }
+        },
+        "item_10": {
+          "type": "collection-tab",
+          "settings": {
+            "label": "MIDI DRESSES",
+            "collection": ""
+          },
+          "blocks": {
+            "product-card": {
+              "type": "product-card",
+              "static": true,
+              "settings": {
+                "color_type": "inherit",
+                "color_scheme": "scheme-1"
+              }
+            }
+          }
+        },
+        "item_11": {
+          "type": "button",
+          "settings": {
+            "button_label": "VIEW ALL",
+            "button_link": "shopify://collections/all",
+            "button_style": "tertiary"
+          }
+        }
+      },
+      "block_order": [
+        "item_5",
+        "item_7",
+        "item_8",
+        "item_9",
+        "item_10",
+        "item_11"
+      ],
       "settings": {
+        "load_all_tabs": true,
         "section_width": "page_width",
         "gap_desktop": 24,
         "gap_mobile": 24,
@@ -88,123 +197,17 @@
         "padding_bottom": 32,
         "customize_mobile_padding": true,
         "padding_top_mobile": 8,
-        "padding_bottom_mobile": 24,
-        "load_all_tabs": true
-      },
-      "blocks": {
-        "item_5": {
-          "type": "header",
-          "settings": {
-            "alignment": "center",
-            "width": "fill"
-          },
-          "blocks": {
-            "item_6": {
-              "type": "heading",
-              "settings": {
-                "text": "<p>NEW ARRIVALS</p>",
-                "heading_size": "md",
-                "html_tag": "h2"
-              }
-            }
-          },
-          "block_order": [
-            "item_6"
-          ]
-        },
-        "item_7": {
-          "type": "tab-layout",
-          "settings": {
-            "style": "underline",
-            "font": "body",
-            "heading_size": "sm",
-            "gap_desktop": 24,
-            "gap_mobile": 16
-          }
-        },
-        "item_8": {
-          "type": "collection-tab",
-          "settings": {
-            "label": "BEST SELLERS",
-            "collection": ""
-          },
-          "blocks": {
-            "product-card": {
-              "type": "product-card",
-              "settings": {
-                "color_type": "inherit",
-                "color_scheme": "scheme-1"
-              },
-              "static": true
-            }
-          }
-        },
-        "item_9": {
-          "type": "collection-tab",
-          "settings": {
-            "label": "NEW IN",
-            "collection": ""
-          },
-          "blocks": {
-            "product-card": {
-              "type": "product-card",
-              "settings": {
-                "color_type": "inherit",
-                "color_scheme": "scheme-1"
-              },
-              "static": true
-            }
-          }
-        },
-        "item_10": {
-          "type": "collection-tab",
-          "settings": {
-            "label": "MIDI DRESSES",
-            "collection": ""
-          },
-          "blocks": {
-            "product-card": {
-              "type": "product-card",
-              "settings": {
-                "color_type": "inherit",
-                "color_scheme": "scheme-1"
-              },
-              "static": true
-            }
-          }
-        },
-        "item_11": {
-          "type": "button",
-          "settings": {
-            "button_label": "VIEW ALL",
-            "button_style": "tertiary",
-            "button_link": "shopify://collections/all"
-          }
-        }
-      },
-      "block_order": [
-        "item_5",
-        "item_7",
-        "item_8",
-        "item_9",
-        "item_10",
-        "item_11"
-      ]
+        "padding_bottom_mobile": 24
+      }
     },
     "shop_by_category": {
       "type": "collection-list-editorial",
-      "settings": {
-        "gap_desktop": 12,
-        "gap_mobile": 8,
-        "padding_top": 32,
-        "padding_bottom": 64
-      },
       "blocks": {
         "item_12": {
           "type": "header",
           "settings": {
-            "alignment": "center",
-            "width": "fill"
+            "width": "fill",
+            "alignment": "center"
           },
           "blocks": {
             "item_13": {
@@ -222,6 +225,7 @@
         },
         "item_14": {
           "type": "collection-category",
+          "settings": {},
           "blocks": {
             "item_15": {
               "type": "heading",
@@ -235,8 +239,8 @@
               "type": "button",
               "settings": {
                 "button_label": "SHOP NOW",
-                "button_style": "primary",
-                "button_link": "shopify://collections/all"
+                "button_link": "shopify://collections/all",
+                "button_style": "primary"
               }
             }
           },
@@ -247,6 +251,7 @@
         },
         "item_17": {
           "type": "collection-category",
+          "settings": {},
           "blocks": {
             "item_18": {
               "type": "heading",
@@ -260,8 +265,8 @@
               "type": "button",
               "settings": {
                 "button_label": "SHOP NOW",
-                "button_style": "primary",
-                "button_link": "shopify://collections/all"
+                "button_link": "shopify://collections/all",
+                "button_style": "primary"
               }
             }
           },
@@ -272,6 +277,7 @@
         },
         "item_20": {
           "type": "collection-category",
+          "settings": {},
           "blocks": {
             "item_21": {
               "type": "heading",
@@ -285,8 +291,8 @@
               "type": "button",
               "settings": {
                 "button_label": "SHOP NOW",
-                "button_style": "primary",
-                "button_link": "shopify://collections/all"
+                "button_link": "shopify://collections/all",
+                "button_style": "primary"
               }
             }
           },
@@ -297,6 +303,7 @@
         },
         "item_23": {
           "type": "collection-category",
+          "settings": {},
           "blocks": {
             "item_24": {
               "type": "heading",
@@ -310,8 +317,8 @@
               "type": "button",
               "settings": {
                 "button_label": "SHOP NOW",
-                "button_style": "primary",
-                "button_link": "shopify://collections/all"
+                "button_link": "shopify://collections/all",
+                "button_style": "primary"
               }
             }
           },
@@ -327,7 +334,13 @@
         "item_17",
         "item_20",
         "item_23"
-      ]
+      ],
+      "settings": {
+        "gap_desktop": 12,
+        "gap_mobile": 8,
+        "padding_top": 32,
+        "padding_bottom": 64
+      }
     }
   },
   "order": [
