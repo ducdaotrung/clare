@@ -291,6 +291,11 @@
     assign countdown_class = countdown_class | append: ' countdown-timer--no-background'
   endif
 
+  assign countdown_tag = 'countdown-timer'
+  if countdown_digit_tiles
+    assign countdown_tag = 'countdown-digit-timer'
+  endif
+
   assign countdown_padding_top = block.settings.padding_top | default: 0 | plus: 0
   assign countdown_padding_bottom = block.settings.padding_bottom | default: 0 | plus: 0
   assign countdown_padding_left = block.settings.padding_left | default: 0 | plus: 0
@@ -306,7 +311,7 @@
 %}
 
 {% if countdown_should_render %}
-  <countdown-timer
+  <{{ countdown_tag }}
     class="{{ countdown_class }}"
     data-countdown-timer
     data-countdown-type="{{ countdown_type }}"
@@ -329,7 +334,7 @@
     <span class="countdown-timer__announcement visually-hidden" data-countdown-announcement aria-live="polite">
       {{ countdown_days_display }} {{ 'countdown.days' | t }}, {{ countdown_hours_display }} {{ 'countdown.hours' | t }}, {{ countdown_minutes_display }} {{ 'countdown.minutes' | t }}, {{ countdown_seconds_display }} {{ 'countdown.seconds' | t }}
     </span>
-  </countdown-timer>
+  </{{ countdown_tag }}>
 {% endif %}
 
 {% stylesheet %}
@@ -577,7 +582,7 @@
 
 {% javascript %}
   (() => {
-    if (customElements.get('countdown-timer')) return;
+    if (customElements.get('countdown-digit-timer')) return;
 
     const SECOND = 1000;
     const UNIT_ORDER = ['days', 'hours', 'minutes', 'seconds'];
@@ -755,7 +760,10 @@
       }
     }
 
-    customElements.define('countdown-timer', CountdownTimer);
+    if (!customElements.get('countdown-timer')) {
+      customElements.define('countdown-timer', CountdownTimer);
+    }
+    customElements.define('countdown-digit-timer', class extends CountdownTimer {});
   })();
 {% endjavascript %}
 
