@@ -2701,6 +2701,7 @@
               "type": "gallery-image",
               "name": "Gallery image",
               "settings": {
+                "image": "shopify://shop_images/clare-social-5.png",
                 "alt_text": "",
                 "tag": "@pam_sam",
                 "tag_font_size": "custom",
@@ -2724,6 +2725,7 @@
               "type": "gallery-image",
               "name": "Gallery image",
               "settings": {
+                "image": "shopify://shop_images/clare-social-4.png",
                 "alt_text": "",
                 "tag": "@pam_sam",
                 "tag_font_size": "custom",
@@ -2747,6 +2749,7 @@
               "type": "gallery-image",
               "name": "Gallery image",
               "settings": {
+                "image": "shopify://shop_images/clare-social-3.png",
                 "alt_text": "",
                 "tag": "@pam_sam",
                 "tag_font_size": "custom",
@@ -2770,6 +2773,7 @@
               "type": "gallery-image",
               "name": "Gallery image",
               "settings": {
+                "image": "shopify://shop_images/clare-social-2.png",
                 "alt_text": "",
                 "tag": "@pam_sam",
                 "tag_font_size": "custom",
@@ -2793,6 +2797,7 @@
               "type": "gallery-image",
               "name": "Gallery image",
               "settings": {
+                "image": "shopify://shop_images/clare-social-1.png",
                 "alt_text": "",
                 "tag": "@pam_sam",
                 "tag_font_size": "custom",
