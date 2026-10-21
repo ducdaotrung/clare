@@ -379,6 +379,7 @@
         "item_5": {
           "type": "header",
           "settings": {
+            "mobile_button_after_countdown": false,
             "width": "fill",
             "max_width": 750,
             "customize_mobile_size": false,
@@ -584,6 +585,7 @@
         "item_12": {
           "type": "header",
           "settings": {
+            "mobile_button_after_countdown": false,
             "width": "fill",
             "max_width": 750,
             "customize_mobile_size": true,
@@ -1179,6 +1181,7 @@
         "header_pTXGaU": {
           "type": "header",
           "settings": {
+            "mobile_button_after_countdown": false,
             "width": "fill",
             "max_width": 750,
             "customize_mobile_size": false,
@@ -1487,11 +1490,11 @@
             "overlay_color": "",
             "overlay_gradient": "linear-gradient(180deg, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.52))",
             "backdrop_blur": 0,
-            "padding_top": 0,
-            "padding_bottom": 0,
+            "padding_top": 44,
+            "padding_bottom": 44,
             "padding_left": 0,
             "padding_right": 0,
-            "customize_mobile_padding": false,
+            "customize_mobile_padding": true,
             "padding_top_mobile": 0,
             "padding_bottom_mobile": 0,
             "padding_left_mobile": 0,
