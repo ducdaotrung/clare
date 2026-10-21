@@ -1975,6 +1975,75 @@
         "padding_top_mobile": 50,
         "padding_bottom_mobile": 50
       }
+    },
+    "text_marquee_custom_cWGFUT": {
+      "type": "text-marquee-custom",
+      "blocks": {
+        "marquee_fKyKwk": {
+          "type": "marquee",
+          "settings": {
+            "show_top_divider": false,
+            "show_bottom_divider": false,
+            "show_blurred_edges": false,
+            "enable_parallax": false,
+            "alignment": "center",
+            "animation_speed": 0.1,
+            "animation_direction": "backward",
+            "gap_desktop": 32,
+            "gap_mobile": 28,
+            "width": "fill",
+            "custom_width": 50,
+            "color_type": "inherit",
+            "color_scheme": "",
+            "padding_top": 0,
+            "padding_bottom": 0,
+            "customize_mobile_padding": false,
+            "padding_top_mobile": 0,
+            "padding_bottom_mobile": 0
+          },
+          "blocks": {
+            "marquee_image_LT3BQL": {
+              "type": "_marquee-image",
+              "name": "Image",
+              "settings": {
+                "image_ratio": "original",
+                "image_link": "",
+                "open_in_new_tab": false,
+                "width_custom_desktop": 300,
+                "width_custom_mobile": 50,
+                "corner_radius": "inherit",
+                "custom_corner_radius": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "marquee_image_LT3BQL"
+          ]
+        }
+      },
+      "block_order": [
+        "marquee_fKyKwk"
+      ],
+      "name": "Text marquee (custom)",
+      "settings": {
+        "section_width": "full_width_no_padding",
+        "direction": "vertical",
+        "position_horizontal": "center",
+        "horizontal_alignment": "left",
+        "customize_mobile_alignment": true,
+        "alignment": "left",
+        "alignment_mobile": "left",
+        "gap_desktop": 0,
+        "gap_mobile": 0,
+        "color_scheme": "scheme-1",
+        "background_color": "#ffffff",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "customize_mobile_padding": false,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0
+      }
     }
   },
   "order": [
@@ -1984,6 +2053,7 @@
     "featured_collection_banner_8cjkEm",
     "custom_section_ePdeKV",
     "featured_collection_qVbVaf",
-    "collection_list_yLB8Vm"
+    "collection_list_yLB8Vm",
+    "text_marquee_custom_cWGFUT"
   ]
 }
