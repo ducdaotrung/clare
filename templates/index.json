@@ -2441,11 +2441,11 @@
                 "padding_bottom": 0,
                 "padding_left": 0,
                 "padding_right": 0,
-                "customize_mobile_padding": false,
-                "padding_top_mobile": 0,
-                "padding_bottom_mobile": 0,
-                "padding_left_mobile": 0,
-                "padding_right_mobile": 0
+                "customize_mobile_padding": true,
+                "padding_top_mobile": 36,
+                "padding_bottom_mobile": 36,
+                "padding_left_mobile": 28,
+                "padding_right_mobile": 28
               },
               "blocks": {
                 "header_8kYYGt": {
