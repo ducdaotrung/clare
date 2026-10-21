@@ -2665,6 +2665,9 @@
         "gallery_grid_J7zQFA": {
           "type": "gallery-grid",
           "settings": {
+            "layout": "carousel",
+            "columns_desktop": "5",
+            "columns_mobile": "1",
             "gap": 16,
             "gap_mobile": 12,
             "color_scheme": "",
@@ -2687,118 +2690,26 @@
               "settings": {
                 "alt_text": "",
                 "tag": "@pam_sam",
-                "tag_font_size": "md",
+                "tag_font_size": "custom",
                 "tag_font_size_custom": 16,
                 "customize_mobile_tag_font_size": false,
                 "tag_font_size_mobile": "md",
                 "tag_font_size_custom_mobile": 14,
                 "social_network": "instagram",
                 "social_url": "",
-                "social_background": "#ffffff",
-                "social_color": "#6a372f",
+                "social_background": "rgba(0,0,0,0)",
+                "social_color": "#FFFFFF",
                 "show_overlay": "always",
                 "enable_overlay": true,
                 "overlay_style": "solid",
-                "overlay_background": "#00000061",
-                "overlay_gradient": "linear-gradient(180deg, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.52))"
-              },
-              "blocks": {}
-            },
-            "gallery_image_9tCBP3": {
-              "type": "gallery-image",
-              "settings": {
-                "alt_text": "",
-                "tag": "@pam_sam",
-                "tag_font_size": "md",
-                "tag_font_size_custom": 16,
-                "customize_mobile_tag_font_size": false,
-                "tag_font_size_mobile": "md",
-                "tag_font_size_custom_mobile": 14,
-                "social_network": "instagram",
-                "social_url": "",
-                "social_background": "#ffffff",
-                "social_color": "#6a372f",
-                "show_overlay": "always",
-                "enable_overlay": true,
-                "overlay_style": "solid",
-                "overlay_background": "#00000061",
-                "overlay_gradient": "linear-gradient(180deg, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.52))"
-              },
-              "blocks": {}
-            },
-            "gallery_image_BQWgTt": {
-              "type": "gallery-image",
-              "settings": {
-                "alt_text": "",
-                "tag": "@pam_sam",
-                "tag_font_size": "md",
-                "tag_font_size_custom": 16,
-                "customize_mobile_tag_font_size": false,
-                "tag_font_size_mobile": "md",
-                "tag_font_size_custom_mobile": 14,
-                "social_network": "instagram",
-                "social_url": "",
-                "social_background": "#ffffff",
-                "social_color": "#6a372f",
-                "show_overlay": "always",
-                "enable_overlay": true,
-                "overlay_style": "solid",
-                "overlay_background": "#00000061",
-                "overlay_gradient": "linear-gradient(180deg, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.52))"
-              },
-              "blocks": {}
-            },
-            "gallery_image_PTkX4m": {
-              "type": "gallery-image",
-              "settings": {
-                "alt_text": "",
-                "tag": "@pam_sam",
-                "tag_font_size": "md",
-                "tag_font_size_custom": 16,
-                "customize_mobile_tag_font_size": false,
-                "tag_font_size_mobile": "md",
-                "tag_font_size_custom_mobile": 14,
-                "social_network": "instagram",
-                "social_url": "",
-                "social_background": "#ffffff",
-                "social_color": "#6a372f",
-                "show_overlay": "always",
-                "enable_overlay": true,
-                "overlay_style": "solid",
-                "overlay_background": "#00000061",
-                "overlay_gradient": "linear-gradient(180deg, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.52))"
-              },
-              "blocks": {}
-            },
-            "gallery_image_TGFCWT": {
-              "type": "gallery-image",
-              "settings": {
-                "alt_text": "",
-                "tag": "@pam_sam",
-                "tag_font_size": "md",
-                "tag_font_size_custom": 16,
-                "customize_mobile_tag_font_size": false,
-                "tag_font_size_mobile": "md",
-                "tag_font_size_custom_mobile": 14,
-                "social_network": "instagram",
-                "social_url": "",
-                "social_background": "#ffffff",
-                "social_color": "#6a372f",
-                "show_overlay": "always",
-                "enable_overlay": true,
-                "overlay_style": "solid",
-                "overlay_background": "#00000061",
+                "overlay_background": "#00000033",
                 "overlay_gradient": "linear-gradient(180deg, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.52))"
               },
               "blocks": {}
             }
           },
           "block_order": [
-            "gallery_image_bFHT69",
-            "gallery_image_9tCBP3",
-            "gallery_image_BQWgTt",
-            "gallery_image_PTkX4m",
-            "gallery_image_TGFCWT"
+            "gallery_image_bFHT69"
           ]
         }
       },
