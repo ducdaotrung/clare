@@ -2304,6 +2304,294 @@
         "padding_top_mobile": 0,
         "padding_bottom_mobile": 0
       }
+    },
+    "custom_section_QhnKPR": {
+      "type": "custom-section",
+      "blocks": {
+        "columns_kmWiKc": {
+          "type": "columns",
+          "name": "t:general.columns",
+          "settings": {
+            "columns_desktop": "2",
+            "columns_mobile": "1",
+            "enable_swipe_mobile": false,
+            "gap_horizontal": 28,
+            "gap_vertical": 0,
+            "gap_horizontal_mobile": 0,
+            "gap_vertical_mobile": 16,
+            "width": "fill",
+            "custom_width": 50,
+            "padding_top": 0,
+            "padding_bottom": 0,
+            "customize_mobile_padding": false,
+            "padding_top_mobile": 0,
+            "padding_bottom_mobile": 0
+          },
+          "blocks": {
+            "columns_column_DYUFzj": {
+              "type": "_columns-column",
+              "settings": {
+                "direction": "vertical",
+                "alignment": "left",
+                "position": "top",
+                "position_horizontal": "top",
+                "horizontal_alignment": "left",
+                "customize_mobile_alignment": true,
+                "alignment_mobile": "left",
+                "gap_desktop": 8,
+                "gap_mobile": 8,
+                "height": "fit",
+                "border_thickness": 0,
+                "corner_radius": "square",
+                "custom_radius": 20,
+                "shadow": "none",
+                "background_media": "none",
+                "show_overlay": false,
+                "overlay_color": "#00000080",
+                "backdrop_blur": 0,
+                "appearance_type": "inherit",
+                "color_scheme": "",
+                "link": "",
+                "open_in_new_tab": false,
+                "padding_top": 0,
+                "padding_bottom": 0,
+                "padding_left": 0,
+                "padding_right": 0,
+                "customize_mobile_padding": false,
+                "padding_top_mobile": 0,
+                "padding_bottom_mobile": 0,
+                "padding_left_mobile": 0,
+                "padding_right_mobile": 0
+              },
+              "blocks": {
+                "image_E76TCw": {
+                  "type": "image",
+                  "settings": {
+                    "image": "shopify://shop_images/clare-banner-3.png",
+                    "show_image_first_mobile": false,
+                    "image_link": "",
+                    "open_in_new_tab": false,
+                    "alt_text": "",
+                    "device": "mobile",
+                    "image_ratio_desktop": "custom",
+                    "height_desktop": "auto",
+                    "image_ratio_custom_width_desktop": 5,
+                    "image_ratio_custom_height_desktop": 4,
+                    "width_desktop": "fill",
+                    "width_custom_desktop": 100,
+                    "limit_width_desktop": false,
+                    "max_width_desktop": 1600,
+                    "image_ratio_mobile": "custom",
+                    "height_mobile": "auto",
+                    "image_ratio_custom_width_mobile": 5,
+                    "image_ratio_custom_height_mobile": 4,
+                    "width_mobile": "fill",
+                    "width_custom_mobile": 100,
+                    "limit_width_mobile": false,
+                    "max_width_mobile": 1600,
+                    "corner_radius": "square",
+                    "custom_corner_radius": 0,
+                    "show_overlay": false,
+                    "overlay_style": "solid",
+                    "overlay_color": "",
+                    "overlay_gradient": "linear-gradient(180deg, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.52))",
+                    "padding_top": 0,
+                    "padding_bottom": 0,
+                    "padding_left": 0,
+                    "padding_right": 0,
+                    "customize_mobile_padding": false,
+                    "padding_top_mobile": 0,
+                    "padding_bottom_mobile": 0,
+                    "padding_left_mobile": 0,
+                    "padding_right_mobile": 0
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "image_E76TCw"
+              ]
+            },
+            "columns_column_HBEMdK": {
+              "type": "_columns-column",
+              "settings": {
+                "direction": "vertical",
+                "alignment": "center",
+                "position": "center",
+                "position_horizontal": "top",
+                "horizontal_alignment": "left",
+                "customize_mobile_alignment": true,
+                "alignment_mobile": "left",
+                "gap_desktop": 8,
+                "gap_mobile": 8,
+                "height": "fill",
+                "border_thickness": 0,
+                "corner_radius": "square",
+                "custom_radius": 20,
+                "shadow": "none",
+                "background_media": "none",
+                "show_overlay": false,
+                "overlay_color": "#00000080",
+                "backdrop_blur": 0,
+                "appearance_type": "scheme",
+                "color_scheme": "scheme-2",
+                "link": "",
+                "open_in_new_tab": false,
+                "padding_top": 0,
+                "padding_bottom": 0,
+                "padding_left": 0,
+                "padding_right": 0,
+                "customize_mobile_padding": false,
+                "padding_top_mobile": 0,
+                "padding_bottom_mobile": 0,
+                "padding_left_mobile": 0,
+                "padding_right_mobile": 0
+              },
+              "blocks": {
+                "header_8kYYGt": {
+                  "type": "header",
+                  "name": "t:general.header",
+                  "settings": {
+                    "mobile_button_after_countdown": false,
+                    "width": "fit",
+                    "max_width": 750,
+                    "customize_mobile_size": false,
+                    "width_mobile": "fit",
+                    "max_width_mobile": 480,
+                    "inherit_alignment": false,
+                    "alignment": "left",
+                    "customize_mobile_alignment": false,
+                    "alignment_mobile": "left",
+                    "gap_desktop": 12,
+                    "gap_mobile": 8,
+                    "padding_top": 0,
+                    "padding_bottom": 0,
+                    "padding_left": 0,
+                    "padding_right": 0,
+                    "customize_mobile_padding": false,
+                    "padding_top_mobile": 0,
+                    "padding_bottom_mobile": 0,
+                    "padding_left_mobile": 0,
+                    "padding_right_mobile": 0
+                  },
+                  "blocks": {
+                    "heading_8frGn6": {
+                      "type": "heading",
+                      "settings": {
+                        "text": "<p>TIMELESS STYLE DESIGN</p>",
+                        "heading_size": "display",
+                        "custom_heading_size": 24,
+                        "html_tag": "h2",
+                        "text_color": "",
+                        "width": "fit",
+                        "max_width": 640,
+                        "customize_mobile_size": false,
+                        "width_mobile": "fit",
+                        "max_width_mobile": 480,
+                        "padding_top": 0,
+                        "padding_bottom": 0,
+                        "padding_left": 0,
+                        "padding_right": 0,
+                        "customize_mobile_padding": false,
+                        "padding_top_mobile": 0,
+                        "padding_bottom_mobile": 0,
+                        "padding_left_mobile": 0,
+                        "padding_right_mobile": 0
+                      },
+                      "blocks": {}
+                    },
+                    "text_cn8NHM": {
+                      "type": "text",
+                      "settings": {
+                        "text": "<p>Individual, captivating styles that speak to your independent personality. You are a Free Spirit, inspired by the world and the people around you.</p><p><br/>You express yourself with your fashion choices. Your wardrobe is a collection of works of art from far-flung places. The clothes you choose reflect however you are feeling. You are what you wear.</p>",
+                        "text_size": "display",
+                        "custom_font_size": 16,
+                        "height_limit": "none",
+                        "text_color": "",
+                        "width": "fit",
+                        "max_width": 640,
+                        "customize_mobile_size": false,
+                        "width_mobile": "fit",
+                        "max_width_mobile": 480,
+                        "padding_top": 0,
+                        "padding_bottom": 0,
+                        "padding_left": 0,
+                        "padding_right": 0,
+                        "customize_mobile_padding": false,
+                        "padding_top_mobile": 0,
+                        "padding_bottom_mobile": 0,
+                        "padding_left_mobile": 0,
+                        "padding_right_mobile": 0
+                      },
+                      "blocks": {}
+                    },
+                    "button_zTVn6a": {
+                      "type": "button",
+                      "name": "t:general.button",
+                      "settings": {
+                        "button_label": "SHOP NOW",
+                        "button_link": "",
+                        "button_open_in_new_tab": false,
+                        "button_style": "primary",
+                        "show_icon": false,
+                        "icon": "arrow_right",
+                        "icon_position": "after",
+                        "icon_size": "inherit",
+                        "icon_width": 20,
+                        "width": "fit",
+                        "width_mobile": "fit",
+                        "padding_top": 0,
+                        "padding_bottom": 0,
+                        "padding_left": 0,
+                        "padding_right": 0,
+                        "customize_mobile_padding": false,
+                        "padding_top_mobile": 0,
+                        "padding_bottom_mobile": 0,
+                        "padding_left_mobile": 0,
+                        "padding_right_mobile": 0
+                      },
+                      "blocks": {}
+                    }
+                  },
+                  "block_order": [
+                    "heading_8frGn6",
+                    "text_cn8NHM",
+                    "button_zTVn6a"
+                  ]
+                }
+              },
+              "block_order": [
+                "header_8kYYGt"
+              ]
+            }
+          },
+          "block_order": [
+            "columns_column_DYUFzj",
+            "columns_column_HBEMdK"
+          ]
+        }
+      },
+      "block_order": [
+        "columns_kmWiKc"
+      ],
+      "name": "Image text split layout",
+      "settings": {
+        "section_width": "page_width",
+        "max_width": 1200,
+        "alignment": "left",
+        "customize_mobile_alignment": false,
+        "alignment_mobile": "left",
+        "content_gap": 16,
+        "customize_mobile_gap": false,
+        "content_gap_mobile": 12,
+        "color_scheme": "scheme-1",
+        "background_color": "",
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "customize_mobile_padding": true,
+        "padding_top_mobile": 56,
+        "padding_bottom_mobile": 56
+      }
     }
   },
   "order": [
@@ -2315,6 +2603,7 @@
     "featured_collection_qVbVaf",
     "collection_list_yLB8Vm",
     "text_marquee_custom_F4MPGQ",
-    "hero_kCqAYy"
+    "hero_kCqAYy",
+    "custom_section_QhnKPR"
   ]
 }
