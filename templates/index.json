@@ -2600,41 +2600,16 @@
           "type": "gallery-header-group",
           "settings": {
             "alignment": "center",
-            "gap": 8,
+            "gap": 16,
             "customize_mobile_alignment": false,
             "alignment_mobile": "center",
-            "gap_mobile": 8
+            "gap_mobile": 16
           },
           "blocks": {
-            "eyebrow_4jQd7x": {
-              "type": "eyebrow",
-              "settings": {
-                "text": "<p>Section TAG</p>",
-                "font_size": "display",
-                "custom_font_size": 16,
-                "color": "",
-                "show_background": false,
-                "show_icon": false,
-                "icon": "circle",
-                "border_thickness": 0,
-                "corner_radius": "square",
-                "color_scheme": "",
-                "padding_top": 0,
-                "padding_bottom": 0,
-                "padding_left": 0,
-                "padding_right": 0,
-                "customize_mobile_padding": false,
-                "padding_top_mobile": 0,
-                "padding_bottom_mobile": 0,
-                "padding_left_mobile": 0,
-                "padding_right_mobile": 0
-              },
-              "blocks": {}
-            },
             "heading_Vq4wjp": {
               "type": "heading",
               "settings": {
-                "text": "<p>Follow Us On Instagram</p>",
+                "text": "<p>LET'S GET SOCIAL</p>",
                 "heading_size": "display",
                 "custom_heading_size": 24,
                 "html_tag": "h2",
@@ -2659,7 +2634,7 @@
             "text_yXMwTU": {
               "type": "text",
               "settings": {
-                "text": "<p>@pam_sam</p>",
+                "text": "<p>See you at&nbsp;<span style=\"text-decoration:underline\">@max_stylelived</span></p>",
                 "text_size": "display",
                 "custom_font_size": 16,
                 "height_limit": "none",
@@ -2683,7 +2658,6 @@
             }
           },
           "block_order": [
-            "eyebrow_4jQd7x",
             "heading_Vq4wjp",
             "text_yXMwTU"
           ]
@@ -2842,7 +2816,7 @@
         "alignment_mobile": "left",
         "content_gap": 40,
         "customize_mobile_gap": true,
-        "content_gap_mobile": 32,
+        "content_gap_mobile": 36,
         "color_scheme": "scheme-1",
         "background_color": "",
         "padding_top": 0,
