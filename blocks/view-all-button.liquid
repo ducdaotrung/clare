@@ -30,13 +30,7 @@
     assign collection_list_view_all_attributes = collection_list_view_all_attributes | append: ' data-view-all-button-dynamic'
   endif
 
-  assign collection_list_view_all_is_featured = false
-  if block.id contains 'featured-collection-view-all'
-    assign collection_list_view_all_is_featured = true
-    assign collection_list_view_all_url = closest.collection.url
-    assign collection_list_view_all_attributes = 'data-view-all-button data-view-all-button-dynamic'
-  endif
-  assign collection_list_view_all_can_render = collection_list_view_all_is_featured
+  assign collection_list_view_all_can_render = false
   if collection_list_view_all_url != blank
     assign collection_list_view_all_can_render = true
   endif
@@ -63,7 +57,7 @@
 
 {% if collection_list_view_all_can_render %}
   <div
-    class="collection-list-view-all{% if block.settings.hide_view_all_mobile and collection_list_view_all_is_featured == false %} collection-list-view-all--hide-mobile{% endif %}{% if block.settings.full_width_mobile %} collection-list-view-all--full-width-mobile{% endif %}"
+    class="collection-list-view-all{% if block.settings.hide_view_all_mobile %} collection-list-view-all--hide-mobile{% endif %}{% if block.settings.full_width_mobile %} collection-list-view-all--full-width-mobile{% endif %}"
     {% if collection_list_view_all_style_attribute != blank %}style="{{ collection_list_view_all_style_attribute }}"{% endif %}
     {{ block.shopify_attributes }}
   >
@@ -71,7 +65,6 @@
       label: block.settings.button_label,
       fallback_label: collection_list_view_all_fallback_label,
       url: collection_list_view_all_url,
-      force_link: collection_list_view_all_is_featured,
       open_in_new_tab: block.settings.button_open_in_new_tab,
       variant: block.settings.button_style,
       fallback_variant: 'text',

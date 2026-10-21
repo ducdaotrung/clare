@@ -176,7 +176,7 @@
 {% assign header_plain_text = header_content | strip_html | replace: '&nbsp;', '' | replace: '&#160;', '' | strip %}
 
 <div
-  class="block-header size-style layout-flow layout-flow--responsive motion-block{% if block.settings.mobile_button_after_countdown %} block-header--mobile-button-after-countdown{% endif %}"
+  class="block-header size-style layout-flow layout-flow--responsive motion-block"
   {% if header_style != blank %}style="{{ header_style }}"{% endif %}
   {% if header_plain_text == blank %}data-content-empty{% endif %}
   {{ block.shopify_attributes }}
@@ -215,24 +215,6 @@
       text-align: var(--header-text-align-mobile, var(--header-text-align, inherit));
     }
   }
-  @media (max-width: 749px) {
-    .group:has(> .block-header--mobile-button-after-countdown):has(> .countdown-timer) {
-      --countdown-cta-gap: var(--layout-flow-gap-mobile, var(--layout-flow-gap, 0px));
-      row-gap: 0;
-    }
-    .group:has(> .countdown-timer) > .block-header--mobile-button-after-countdown { display: contents; }
-    .group:has(> .countdown-timer) > .block-header--mobile-button-after-countdown > * + * {
-      margin-top: var(--layout-flow-gap-mobile, var(--layout-flow-gap, 0px));
-    }
-    .group:has(> .block-header--mobile-button-after-countdown) > .countdown-timer {
-      order: 1;
-      margin-top: var(--countdown-cta-gap);
-    }
-    .group:has(> .countdown-timer) > .block-header--mobile-button-after-countdown > .button-block {
-      order: 2;
-      margin-top: var(--countdown-cta-gap);
-    }
-  }
 {% endstylesheet %}
 
 {% schema %}
@@ -258,12 +240,6 @@
     { "type": "video" }
   ],
   "settings": [
-    {
-      "type": "checkbox",
-      "id": "mobile_button_after_countdown",
-      "label": "Place button after countdown on mobile",
-      "default": false
-    },
     {
       "type": "header",
       "content": "t:general.size"
