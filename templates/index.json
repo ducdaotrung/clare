@@ -1696,7 +1696,10 @@
         "customize_mobile_padding": true,
         "padding_top_mobile": 90,
         "padding_bottom_mobile": 90
-      }
+      },
+      "custom_css": [
+        "@media (max-width: 767.98px) {.group:has(> .block-header + [data-countdown-timer]) {display: grid; grid-template-columns: minmax(0, 1fr); gap: 8px; justify-items: center;} .group > .block-header {display: contents;} .group > [data-countdown-timer] {order: 1;} .block-header > .button-block {order: 2; margin-top: 24px;}}"
+      ]
     },
     "featured_collection_qVbVaf": {
       "type": "featured-collection",
