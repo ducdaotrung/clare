@@ -1380,7 +1380,7 @@
         "product_list_banner_3PmnUb": {
           "type": "product-list-banner",
           "settings": {
-            "collection": "",
+            "collection": "trending-now",
             "max_products": 6,
             "columns_mobile": "2",
             "enable_swipe_mobile": false,
@@ -1784,7 +1784,7 @@
             "use_recommendations": false,
             "recommendation_type": "related",
             "products": [],
-            "collection": "",
+            "collection": "trending-for-you",
             "max_products": 8,
             "layout_type": "grid",
             "columns_desktop": "4",
