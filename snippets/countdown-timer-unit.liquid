@@ -6,6 +6,8 @@
   @param {string} countdown_style - Countdown layout style.
 {% enddoc %}
 {% assign label_key = 'countdown.' | append: unit %}
+{% if digit_tiles and unit == 'minutes' %}{% assign label_key = 'countdown.minutes_short' %}{% endif %}
+{% if digit_tiles and unit == 'seconds' %}{% assign label_key = 'countdown.seconds_short' %}{% endif %}
 <div class="countdown-timer__unit" data-countdown-unit="{{ unit }}" data-countdown-unit-label="{{ label_key | t | escape }}">
   <span class="countdown-timer__value" data-countdown-value="{{ unit }}">
     {%- if digit_tiles -%}

@@ -250,7 +250,9 @@
     "hours": "Hours",
     "minutes": "Min",
     "seconds": "Sec",
-    "expired": "The countdown has ended."
+    "expired": "The countdown has ended.",
+    "minutes_short": "Mins",
+    "seconds_short": "Secs"
   },
   "products": {
     "category": "Category",
