@@ -733,12 +733,23 @@
     "description": "Description",
     "question": "Question",
     "answer": "Answer",
-    "initially_open": "Open by default"
+    "initially_open": "Open by default",
+    "desktop_height_px": "Desktop height (px)",
+    "mobile_height_px": "Mobile height (px)"
   },
   "options": {
-    "slide_shadow": { "extra_small": "Extra small" },
-    "slide_radius": { "inherit": "Inherit", "custom": "Custom" },
-    "slide_background": { "none": "None", "image": "Image", "video": "Video" },
+    "slide_shadow": {
+      "extra_small": "Extra small"
+    },
+    "slide_radius": {
+      "inherit": "Inherit",
+      "custom": "Custom"
+    },
+    "slide_background": {
+      "none": "None",
+      "image": "Image",
+      "video": "Video"
+    },
     "overlay_style": {
       "solid": "Solid",
       "gradient": "Gradient"
