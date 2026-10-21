@@ -2672,7 +2672,7 @@
           "type": "view-all-button",
           "static": true,
           "settings": {
-            "button_label": "View all",
+            "button_label": "VIEW ALL",
             "button_link": "",
             "button_open_in_new_tab": false,
             "button_style": "text",
