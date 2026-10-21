@@ -1845,7 +1845,7 @@
       }
     },
     "collection_list_yLB8Vm": {
-      "type": "collection-list",
+      "type": "collection-list-custom",
       "blocks": {
         "collection-list": {
           "type": "collection-list-items",
