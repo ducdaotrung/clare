@@ -921,6 +921,10 @@
       "grid": "Grid",
       "carousel": "Carousel"
     },
+    "gallery_layout": {
+      "grid": "Grid",
+      "carousel": "Carousel"
+    },
     "tab_style": {
       "underline": "Underline",
       "button": "Button"

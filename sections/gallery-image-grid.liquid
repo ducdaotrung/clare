@@ -59,7 +59,7 @@
 
 {% stylesheet %}
   .gallery-image-grid { width: 100%; min-width: 0; }
-  .gallery-image-grid__spacing { position: relative; overflow: hidden; padding-top: var(--gallery-section-padding-top, 0px); padding-bottom: var(--gallery-section-padding-bottom, 0px); background-color: var(--gallery-section-background, var(--background-color)); }
+  .gallery-image-grid__spacing { position: relative; overflow: visible; padding-top: var(--gallery-section-padding-top, 0px); padding-bottom: var(--gallery-section-padding-bottom, 0px); background-color: var(--gallery-section-background, var(--background-color)); }
   .gallery-image-grid__background { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
   .gallery-image-grid__background img { display: block; width: 100%; height: 100%; object-fit: cover; }
   .gallery-image-grid__container { position: relative; z-index: 1; }
@@ -109,7 +109,8 @@
         { "type": "heading", "settings": { "text": "<p>Follow Us On Instagram</p>", "html_tag": "h2" } },
         { "type": "text", "settings": { "text": "<p>@pam_sam</p>" } }
       ] },
-      { "type": "gallery-grid", "settings": { "columns_desktop": 4, "columns_mobile": "1", "gap": 32, "gap_mobile": 24, "width": "fill" }, "blocks": [
+      { "type": "gallery-grid", "settings": { "gap": 32, "gap_mobile": 24, "width": "fill" }, "blocks": [
+        { "type": "gallery-image", "settings": { "tag": "@pam_sam", "social_network": "instagram", "show_overlay": "always" } },
         { "type": "gallery-image", "settings": { "tag": "@pam_sam", "social_network": "instagram", "show_overlay": "always" } },
         { "type": "gallery-image", "settings": { "tag": "@pam_sam", "social_network": "instagram", "show_overlay": "always" } },
         { "type": "gallery-image", "settings": { "tag": "@pam_sam", "social_network": "instagram", "show_overlay": "always" } },
