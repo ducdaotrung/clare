@@ -534,7 +534,7 @@
   }
 
   .countdown-timer--digit-tiles { color: #fff; }
-  .countdown-timer--digit-tiles .countdown-timer__units { gap: 0; flex-wrap: wrap; row-gap: 16px; }
+  .countdown-timer--digit-tiles .countdown-timer__units { gap: 0; }
   .countdown-timer--digit-tiles .countdown-timer__unit {
     position: relative;
     width: auto;
@@ -586,6 +586,8 @@
     text-transform: var(--font-heading-sm-text-transform);
   }
   @media screen and (max-width: 749px) {
+    .countdown-timer--digit-tiles { width: 100%; container-type: inline-size; }
+    .countdown-timer--digit-tiles .countdown-timer__digit { width: clamp(18px, calc((100cqi - 136px) / 8), 36px); }
     .countdown-timer--digit-tiles .countdown-timer__value,
     .countdown-timer--digit-tiles .countdown-timer__unit + .countdown-timer__unit::before { font-size: 30px; }
   }
