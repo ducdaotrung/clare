@@ -1502,6 +1502,7 @@
               "type": "header",
               "name": "t:general.header",
               "settings": {
+                "mobile_button_after_countdown": true,
                 "width": "custom",
                 "max_width": 650,
                 "customize_mobile_size": false,
