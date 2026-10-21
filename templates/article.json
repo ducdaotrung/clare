@@ -116,18 +116,23 @@
               "settings": {
                 "ratio": "original",
                 "alignment": "left",
-                "desktop_gap": 8,
+                "desktop_gap": 12,
                 "mobile_gap": 8,
                 "border_thickness": 0,
                 "corner_radius": "inherit",
                 "shadow": "none",
                 "color_type": "inherit",
                 "color_scheme": "scheme-1",
-                "padding_top": 20,
-                "padding_bottom": 0,
-                "padding_left": 0,
-                "padding_right": 10,
-                "customize_mobile_padding": false
+                "padding_top": 32,
+                "padding_bottom": 32,
+                "padding_left": 32,
+                "padding_right": 32,
+                "customize_mobile_padding": true,
+                "media_layout": "editorial",
+                "padding_top_mobile": 0,
+                "padding_bottom_mobile": 0,
+                "padding_left_mobile": 0,
+                "padding_right_mobile": 0
               },
               "blocks": {
                 "blog-card-title-1": {
@@ -135,7 +140,7 @@
                   "settings": {
                     "line_limit": "no_limit",
                     "heading_size": "md",
-                    "html_tag": "h3",
+                    "html_tag": "h4",
                     "padding_top": 0,
                     "padding_bottom": 0,
                     "customize_mobile_padding": false
@@ -147,7 +152,7 @@
                     "text_limit": "two",
                     "size": "md",
                     "padding_top": 0,
-                    "padding_bottom": 6,
+                    "padding_bottom": 0,
                     "customize_mobile_padding": false
                   }
                 },
@@ -173,7 +178,7 @@
                     "size": "sm",
                     "text_color": "",
                     "padding_top": 0,
-                    "padding_bottom": 4,
+                    "padding_bottom": 0,
                     "customize_mobile_padding": false
                   }
                 },

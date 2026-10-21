@@ -21,8 +21,8 @@
   unless blog_card_ratio_setting == 'original' or blog_card_ratio_setting == 'square' or blog_card_ratio_setting == 'portrait' or blog_card_ratio_setting == 'landscape' or blog_card_ratio_setting == 'wide'
     assign blog_card_ratio_setting = 'original'
   endunless
-  assign blog_card_media_layout = block.settings.media_layout | default: 'stacked'
-  unless blog_card_media_layout == 'stacked' or blog_card_media_layout == 'horizontal'
+  assign blog_card_media_layout = block.settings.media_layout | default: 'editorial'
+  unless blog_card_media_layout == 'editorial' or blog_card_media_layout == 'stacked' or blog_card_media_layout == 'horizontal'
     assign blog_card_media_layout = 'stacked'
   endunless
   assign blog_card_ratio = 'auto'
@@ -161,7 +161,7 @@
       url: blog_card_url,
       alt: blog_card_alt,
       width: 1200,
-      sizes: '(min-width: 768px) 25vw, 100vw',
+      sizes: '(min-width: 768px) 420px, 100vw',
       class: blog_card_image_class
     %}
   </div>
@@ -321,6 +321,82 @@
       height: auto;
     }
   }
+
+  /* Reserve overlap in normal flow so carousel and following rows include it. */
+  .blog-card--layout-editorial {
+    display: grid;
+    grid-template-columns: minmax(0, 420fr) minmax(0, 340fr);
+    align-items: end;
+    padding-bottom: 60px;
+    overflow: visible;
+    background: transparent;
+  }
+  .blog-card--layout-editorial > .blog-card__media {
+    align-self: start;
+    width: 100%;
+    max-width: 420px;
+    aspect-ratio: 7 / 6;
+  }
+  .blog-card--layout-editorial .blog-card__media > .image,
+  .blog-card--layout-editorial .blog-card__media img,
+  .blog-card--layout-editorial .blog-card__media picture {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .blog-card--layout-editorial > .blog-card__content {
+    position: relative;
+    z-index: 1;
+    margin-left: -120px;
+    margin-bottom: -60px;
+    background: #fff;
+    justify-content: flex-start;
+  }
+  .blog-card--layout-editorial .blog-card-tag__label {
+    display: inline-block;
+    padding: 4px 8px;
+    border: 1px solid #3a3a3a;
+    background: transparent;
+    color: #3a3a3a;
+    font-size: 12px;
+    text-transform: uppercase;
+  }
+  .blog-card--layout-editorial .blog-card-title__heading {
+    font-size: var(--font-heading-md);
+    line-height: var(--font-heading-md-line-height);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .blog-card--layout-editorial .blog-card-description,
+  .blog-card--layout-editorial .blog-card-meta {
+    font-size: 14px;
+    color: #6c6c6c;
+  }
+  .blog-card--layout-editorial .blog-card-button__button {
+    font-size: 13px;
+    text-transform: uppercase;
+  }
+  @media (max-width: 767.98px) {
+    .blog-card--layout-editorial {
+      grid-template-columns: minmax(0, 1fr);
+      row-gap: 28px;
+      padding-bottom: 0;
+    }
+    .blog-card--layout-editorial > .blog-card__media {
+      max-width: none;
+      height: auto;
+    }
+    .blog-card--layout-editorial > .blog-card__content { margin: 0; }
+    .blog-card--layout-editorial .blog-card-description + .blog-card-meta,
+    .blog-card--layout-editorial .blog-card-meta + .blog-card-description {
+      margin-top: calc(12px - var(--blog-card-gap-mobile, 8px));
+    }
+    .blog-card--layout-editorial .blog-card-description + .blog-card-button,
+    .blog-card--layout-editorial .blog-card-meta + .blog-card-button {
+      margin-top: calc(20px - var(--blog-card-gap-mobile, 8px));
+    }
+  }
 {% endstylesheet %}
 
 {% schema %}
@@ -328,12 +404,24 @@
   "name": "Blog card",
   "tag": null,
   "blocks": [
-    { "type": "@theme" },
-    { "type": "blog-card-tag" },
-    { "type": "blog-card-title" },
-    { "type": "blog-card-description" },
-    { "type": "blog-card-meta" },
-    { "type": "blog-card-button" }
+    {
+      "type": "@theme"
+    },
+    {
+      "type": "blog-card-tag"
+    },
+    {
+      "type": "blog-card-title"
+    },
+    {
+      "type": "blog-card-description"
+    },
+    {
+      "type": "blog-card-meta"
+    },
+    {
+      "type": "blog-card-button"
+    }
   ],
   "settings": [
     {
@@ -345,11 +433,26 @@
       "id": "ratio",
       "label": "Ratio",
       "options": [
-        { "value": "original", "label": "Auto" },
-        { "value": "square", "label": "Square" },
-        { "value": "portrait", "label": "Portrait" },
-        { "value": "landscape", "label": "Landscape" },
-        { "value": "wide", "label": "Wide" }
+        {
+          "value": "original",
+          "label": "Auto"
+        },
+        {
+          "value": "square",
+          "label": "Square"
+        },
+        {
+          "value": "portrait",
+          "label": "Portrait"
+        },
+        {
+          "value": "landscape",
+          "label": "Landscape"
+        },
+        {
+          "value": "wide",
+          "label": "Wide"
+        }
       ],
       "default": "original"
     },
@@ -358,10 +461,20 @@
       "id": "media_layout",
       "label": "Media layout",
       "options": [
-        { "value": "stacked", "label": "Stacked" },
-        { "value": "horizontal", "label": "Horizontal" }
+        {
+          "value": "editorial",
+          "label": "Editorial overlap"
+        },
+        {
+          "value": "stacked",
+          "label": "Stacked"
+        },
+        {
+          "value": "horizontal",
+          "label": "Horizontal"
+        }
       ],
-      "default": "stacked"
+      "default": "editorial"
     },
     {
       "type": "header",
@@ -372,9 +485,18 @@
       "id": "alignment",
       "label": "t:labels.alignment",
       "options": [
-        { "value": "left", "label": "Left" },
-        { "value": "center", "label": "Center" },
-        { "value": "right", "label": "Right" }
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
       ],
       "default": "left"
     },
@@ -383,10 +505,22 @@
       "id": "position",
       "label": "t:labels.position",
       "options": [
-        { "value": "flex-start", "label": "Start" },
-        { "value": "center", "label": "Center" },
-        { "value": "flex-end", "label": "End" },
-        { "value": "space-between", "label": "Space between" }
+        {
+          "value": "flex-start",
+          "label": "Start"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "flex-end",
+          "label": "End"
+        },
+        {
+          "value": "space-between",
+          "label": "Space between"
+        }
       ],
       "default": "space-between",
       "visible_if": "{{ block.settings.media_layout == 'horizontal' }}"
@@ -399,7 +533,7 @@
       "max": 100,
       "step": 1,
       "unit": "px",
-      "default": 8
+      "default": 12
     },
     {
       "type": "range",
@@ -430,9 +564,18 @@
       "id": "corner_radius",
       "label": "t:labels.corner_radius",
       "options": [
-        { "value": "inherit", "label": "Inherit" },
-        { "value": "square", "label": "Square" },
-        { "value": "rounded", "label": "Rounded" }
+        {
+          "value": "inherit",
+          "label": "Inherit"
+        },
+        {
+          "value": "square",
+          "label": "Square"
+        },
+        {
+          "value": "rounded",
+          "label": "Rounded"
+        }
       ],
       "default": "inherit"
     },
@@ -441,9 +584,18 @@
       "id": "shadow",
       "label": "t:labels.shadow",
       "options": [
-        { "value": "none", "label": "None" },
-        { "value": "small", "label": "Small" },
-        { "value": "medium", "label": "Medium" }
+        {
+          "value": "none",
+          "label": "None"
+        },
+        {
+          "value": "small",
+          "label": "Small"
+        },
+        {
+          "value": "medium",
+          "label": "Medium"
+        }
       ],
       "default": "none"
     },
@@ -456,8 +608,14 @@
       "id": "color_type",
       "label": "t:labels.type",
       "options": [
-        { "value": "inherit", "label": "t:options.color_type.inherit" },
-        { "value": "color_scheme", "label": "t:options.color_type.color_scheme" }
+        {
+          "value": "inherit",
+          "label": "t:options.color_type.inherit"
+        },
+        {
+          "value": "color_scheme",
+          "label": "t:options.color_type.color_scheme"
+        }
       ],
       "default": "inherit"
     },
@@ -480,7 +638,7 @@
       "max": 100,
       "step": 1,
       "unit": "px",
-      "default": 12
+      "default": 32
     },
     {
       "type": "range",
@@ -490,7 +648,7 @@
       "max": 100,
       "step": 1,
       "unit": "px",
-      "default": 0
+      "default": 32
     },
     {
       "type": "range",
@@ -500,7 +658,7 @@
       "max": 100,
       "step": 1,
       "unit": "px",
-      "default": 0
+      "default": 32
     },
     {
       "type": "range",
@@ -510,13 +668,13 @@
       "max": 100,
       "step": 1,
       "unit": "px",
-      "default": 0
+      "default": 32
     },
     {
       "type": "checkbox",
       "id": "customize_mobile_padding",
       "label": "t:labels.customize_mobile_padding",
-      "default": false
+      "default": true
     },
     {
       "type": "range",
@@ -526,7 +684,7 @@
       "max": 100,
       "step": 1,
       "unit": "px",
-      "default": 12,
+      "default": 0,
       "visible_if": "{{ block.settings.customize_mobile_padding }}"
     },
     {
@@ -568,18 +726,47 @@
       "name": "Blog card",
       "category": "Blog",
       "settings": {
-        "padding_top": 20
+        "padding_top": 32,
+        "media_layout": "editorial",
+        "desktop_gap": 12,
+        "mobile_gap": 8,
+        "padding_bottom": 32,
+        "padding_left": 32,
+        "padding_right": 32,
+        "customize_mobile_padding": true,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0,
+        "padding_left_mobile": 0,
+        "padding_right_mobile": 0
       },
       "blocks": [
         {
           "type": "blog-card-tag",
           "settings": {
             "text_case": "uppercase",
-            "padding_top": 0
+            "padding_top": 0,
+            "padding_bottom": 0,
+            "customize_mobile_padding": false
           }
         },
-        { "type": "blog-card-title" },
-        { "type": "blog-card-description" },
+        {
+          "type": "blog-card-title",
+          "settings": {
+            "padding_top": 0,
+            "padding_bottom": 0,
+            "customize_mobile_padding": false,
+            "html_tag": "h4",
+            "heading_size": "md"
+          }
+        },
+        {
+          "type": "blog-card-description",
+          "settings": {
+            "padding_top": 0,
+            "padding_bottom": 0,
+            "customize_mobile_padding": false
+          }
+        },
         {
           "type": "blog-card-meta",
           "settings": {
@@ -599,13 +786,18 @@
             "gap": 12,
             "icon_size": 18,
             "icon_gap": 6,
-            "size": "xs"
+            "size": "xs",
+            "padding_top": 0,
+            "padding_bottom": 0,
+            "customize_mobile_padding": false
           }
         },
         {
           "type": "blog-card-button",
           "settings": {
-            "padding_top": 12
+            "padding_top": 0,
+            "padding_bottom": 0,
+            "customize_mobile_padding": false
           }
         }
       ]
