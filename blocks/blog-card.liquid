@@ -325,7 +325,7 @@
   /* Reserve overlap in normal flow so carousel and following rows include it. */
   .blog-card--layout-editorial {
     display: grid;
-    grid-template-columns: minmax(0, 420fr) minmax(0, 340fr);
+    grid-template-columns: minmax(0, min(55.263158%, 420px)) minmax(0, 1fr);
     align-items: end;
     padding-bottom: 60px;
     overflow: visible;
@@ -353,7 +353,7 @@
     background: #fff;
     justify-content: flex-start;
   }
-  .blog-card--layout-editorial .blog-card-tag__label {
+  .blog-card--layout-editorial .blog-card-tag .blog-card-tag__label {
     display: inline-block;
     padding: 4px 8px;
     border: 1px solid #3a3a3a;
@@ -432,6 +432,7 @@
       "type": "select",
       "id": "ratio",
       "label": "Ratio",
+      "visible_if": "{{ block.settings.media_layout != 'editorial' }}",
       "options": [
         {
           "value": "original",
