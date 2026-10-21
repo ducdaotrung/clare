@@ -990,7 +990,7 @@
                       "type": "button",
                       "settings": {
                         "button_label": "SHOP NOW",
-                        "button_link": "shopify://collections/all",
+                        "button_link": "",
                         "button_open_in_new_tab": false,
                         "button_style": "primary",
                         "show_icon": false,
