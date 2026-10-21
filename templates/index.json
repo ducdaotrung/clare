@@ -1923,18 +1923,18 @@
                     "padding_bottom": 24,
                     "padding_left": 24,
                     "padding_right": 24,
-                    "customize_mobile_padding": false,
-                    "padding_top_mobile": 0,
-                    "padding_bottom_mobile": 0,
-                    "padding_left_mobile": 0,
-                    "padding_right_mobile": 0
+                    "customize_mobile_padding": true,
+                    "padding_top_mobile": 16,
+                    "padding_bottom_mobile": 16,
+                    "padding_left_mobile": 16,
+                    "padding_right_mobile": 16
                   },
                   "blocks": {
                     "heading_1": {
                       "type": "heading",
                       "settings": {
                         "text": "<p>NEW ACCESSORIES</p>",
-                        "heading_size": "xl",
+                        "heading_size": "display",
                         "custom_heading_size": 24,
                         "html_tag": "h2",
                         "text_color": "#ffffff",
@@ -2057,18 +2057,18 @@
                     "padding_bottom": 24,
                     "padding_left": 24,
                     "padding_right": 24,
-                    "customize_mobile_padding": false,
-                    "padding_top_mobile": 0,
-                    "padding_bottom_mobile": 0,
-                    "padding_left_mobile": 0,
-                    "padding_right_mobile": 0
+                    "customize_mobile_padding": true,
+                    "padding_top_mobile": 16,
+                    "padding_bottom_mobile": 16,
+                    "padding_left_mobile": 16,
+                    "padding_right_mobile": 16
                   },
                   "blocks": {
                     "heading_1": {
                       "type": "heading",
                       "settings": {
                         "text": "<p>FLORAL DRESSES</p>",
-                        "heading_size": "xl",
+                        "heading_size": "display",
                         "custom_heading_size": 24,
                         "html_tag": "h2",
                         "text_color": "#ffffff",
