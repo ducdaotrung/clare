@@ -282,6 +282,9 @@
 
   assign countdown_style_class = countdown_style | replace: '_', '-'
   assign countdown_class = 'countdown-timer countdown-timer--style-' | append: countdown_style_class
+  if block.settings.digit_tiles and countdown_style == 'with_labels'
+    assign countdown_class = countdown_class | append: ' countdown-timer--digit-tiles'
+  endif
   if block.settings.show_background == false or block.settings.show_background == 'false'
     assign countdown_class = countdown_class | append: ' countdown-timer--no-background'
   endif
@@ -317,27 +320,27 @@
   >
     <div class="countdown-timer__units" aria-hidden="true">
       <div class="countdown-timer__unit" data-countdown-unit="days" data-countdown-unit-label="{{ 'countdown.days' | t | escape }}">
-        <span class="countdown-timer__value" data-countdown-value="days">{{ countdown_days_display }}</span>
+        <span class="countdown-timer__value" data-countdown-value="days">{% if block.settings.digit_tiles and countdown_style == 'with_labels' %}{% assign digits = countdown_days_display | split: '' %}{% for digit in digits %}<span class="countdown-timer__digit">{{ digit }}</span>{% endfor %}{% else %}{{ countdown_days_display }}{% endif %}</span>
         {% if countdown_style != 'numbers_only' %}
-          <span class="countdown-timer__label" data-countdown-label>{{ 'countdown.days' | t }}</span>
+          {% if block.settings.digit_tiles and countdown_style == 'with_labels' %}<h5 class="countdown-timer__label" data-countdown-label>{{ 'countdown.days' | t }}</h5>{% else %}<span class="countdown-timer__label" data-countdown-label>{{ 'countdown.days' | t }}</span>{% endif %}
         {% endif %}
       </div>
       <div class="countdown-timer__unit" data-countdown-unit="hours" data-countdown-unit-label="{{ 'countdown.hours' | t | escape }}">
-        <span class="countdown-timer__value" data-countdown-value="hours">{{ countdown_hours_display }}</span>
+        <span class="countdown-timer__value" data-countdown-value="hours">{% if block.settings.digit_tiles and countdown_style == 'with_labels' %}{% assign digits = countdown_hours_display | split: '' %}{% for digit in digits %}<span class="countdown-timer__digit">{{ digit }}</span>{% endfor %}{% else %}{{ countdown_hours_display }}{% endif %}</span>
         {% if countdown_style != 'numbers_only' %}
-          <span class="countdown-timer__label" data-countdown-label>{{ 'countdown.hours' | t }}</span>
+          {% if block.settings.digit_tiles and countdown_style == 'with_labels' %}<h5 class="countdown-timer__label" data-countdown-label>{{ 'countdown.hours' | t }}</h5>{% else %}<span class="countdown-timer__label" data-countdown-label>{{ 'countdown.hours' | t }}</span>{% endif %}
         {% endif %}
       </div>
       <div class="countdown-timer__unit" data-countdown-unit="minutes" data-countdown-unit-label="{{ 'countdown.minutes' | t | escape }}">
-        <span class="countdown-timer__value" data-countdown-value="minutes">{{ countdown_minutes_display }}</span>
+        <span class="countdown-timer__value" data-countdown-value="minutes">{% if block.settings.digit_tiles and countdown_style == 'with_labels' %}{% assign digits = countdown_minutes_display | split: '' %}{% for digit in digits %}<span class="countdown-timer__digit">{{ digit }}</span>{% endfor %}{% else %}{{ countdown_minutes_display }}{% endif %}</span>
         {% if countdown_style != 'numbers_only' %}
-          <span class="countdown-timer__label" data-countdown-label>{{ 'countdown.minutes' | t }}</span>
+          {% if block.settings.digit_tiles and countdown_style == 'with_labels' %}<h5 class="countdown-timer__label" data-countdown-label>{{ 'countdown.minutes' | t }}</h5>{% else %}<span class="countdown-timer__label" data-countdown-label>{{ 'countdown.minutes' | t }}</span>{% endif %}
         {% endif %}
       </div>
       <div class="countdown-timer__unit" data-countdown-unit="seconds" data-countdown-unit-label="{{ 'countdown.seconds' | t | escape }}">
-        <span class="countdown-timer__value" data-countdown-value="seconds">{{ countdown_seconds_display }}</span>
+        <span class="countdown-timer__value" data-countdown-value="seconds">{% if block.settings.digit_tiles and countdown_style == 'with_labels' %}{% assign digits = countdown_seconds_display | split: '' %}{% for digit in digits %}<span class="countdown-timer__digit">{{ digit }}</span>{% endfor %}{% else %}{{ countdown_seconds_display }}{% endif %}</span>
         {% if countdown_style != 'numbers_only' %}
-          <span class="countdown-timer__label" data-countdown-label>{{ 'countdown.seconds' | t }}</span>
+          {% if block.settings.digit_tiles and countdown_style == 'with_labels' %}<h5 class="countdown-timer__label" data-countdown-label>{{ 'countdown.seconds' | t }}</h5>{% else %}<span class="countdown-timer__label" data-countdown-label>{{ 'countdown.seconds' | t }}</span>{% endif %}
         {% endif %}
       </div>
     </div>
@@ -529,6 +532,63 @@
       transition: none;
     }
   }
+
+  .countdown-timer--digit-tiles { color: #fff; }
+  .countdown-timer--digit-tiles .countdown-timer__units { gap: 0; flex-wrap: wrap; row-gap: 16px; }
+  .countdown-timer--digit-tiles .countdown-timer__unit {
+    position: relative;
+    width: auto;
+    min-width: 0;
+    min-height: 0;
+    flex: 0 0 auto;
+    padding: 0;
+    background: transparent;
+    border-radius: 0;
+    justify-content: flex-start;
+  }
+  .countdown-timer--digit-tiles .countdown-timer__unit + .countdown-timer__unit { margin-left: 40px; }
+  .countdown-timer--digit-tiles .countdown-timer__unit + .countdown-timer__unit::before {
+    content: ':';
+    position: absolute;
+    left: -24px;
+    top: 0;
+    width: 8px;
+    height: 73px;
+    display: grid;
+    place-items: center;
+    font-size: 44px;
+    line-height: 1;
+  }
+  .countdown-timer--digit-tiles .countdown-timer__value {
+    display: flex;
+    gap: 4px;
+    font-size: 44px;
+    line-height: 1;
+    letter-spacing: 0;
+  }
+  .countdown-timer--digit-tiles .countdown-timer__digit {
+    display: grid;
+    place-items: center;
+    width: 36px;
+    height: 73px;
+    background: #ffffff4d;
+    border-radius: 6px;
+  }
+  .countdown-timer--digit-tiles .countdown-timer__label {
+    margin: 8px 0 0;
+    color: inherit;
+    font-family: var(--font-heading-family);
+    font-size: var(--font-heading-sm);
+    font-style: var(--font-heading-style);
+    font-weight: var(--font-heading-weight);
+    line-height: var(--font-heading-sm-line-height);
+    letter-spacing: var(--font-heading-sm-letter-spacing);
+    text-transform: var(--font-heading-sm-text-transform);
+  }
+  @media screen and (max-width: 749px) {
+    .countdown-timer--digit-tiles .countdown-timer__value,
+    .countdown-timer--digit-tiles .countdown-timer__unit + .countdown-timer__unit::before { font-size: 30px; }
+  }
 {% endstylesheet %}
 
 {% javascript %}
@@ -649,7 +709,24 @@
 
         UNIT_ORDER.forEach((unit) => {
           const value = this.values?.[unit];
-          if (value) value.textContent = String(values[unit]).padStart(2, '0');
+          if (!value) return;
+          const display = String(values[unit]).padStart(2, '0');
+          if (this.classList.contains('countdown-timer--digit-tiles')) {
+            if (value.children.length !== display.length) {
+              value.replaceChildren(...Array.from(display, (digit) => {
+                const tile = document.createElement('span');
+                tile.className = 'countdown-timer__digit';
+                tile.textContent = digit;
+                return tile;
+              }));
+            } else {
+              Array.from(value.children).forEach((tile, index) => {
+                if (tile.textContent !== display[index]) tile.textContent = display[index];
+              });
+            }
+          } else {
+            value.textContent = display;
+          }
         });
         this.currentValues = values;
 
@@ -661,6 +738,7 @@
       }
 
       syncUnitWidth() {
+        if (this.classList.contains('countdown-timer--digit-tiles')) return;
         if (!this.unitElements?.length) return;
 
         this.style.removeProperty('--countdown-unit-width');
@@ -717,6 +795,13 @@
         { "value": "inline_superscript", "label": "t:options.countdown_style.inline_superscript" }
       ],
       "default": "with_labels"
+    },
+    {
+      "type": "checkbox",
+      "id": "digit_tiles",
+      "label": "Individual digit tiles",
+      "default": false,
+      "visible_if": "{{ block.settings.style == 'with_labels' }}"
     },
     {
       "type": "checkbox",

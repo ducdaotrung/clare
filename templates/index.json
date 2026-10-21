@@ -1639,6 +1639,7 @@
               "name": "t:general.countdown_timer",
               "settings": {
                 "style": "with_labels",
+                "digit_tiles": true,
                 "show_background": true,
                 "corner_radius": "square",
                 "type": "recurring",
