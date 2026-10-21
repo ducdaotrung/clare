@@ -2044,7 +2044,7 @@
             "show_blurred_edges": false,
             "enable_parallax": false,
             "alignment": "center",
-            "animation_speed": 0.1,
+            "animation_speed": 1,
             "animation_direction": "backward",
             "gap_desktop": 32,
             "gap_mobile": 28,
@@ -2063,6 +2063,22 @@
               "type": "_marquee-image",
               "name": "Image",
               "settings": {
+                "image": "shopify://shop_images/clare-brand-6.png",
+                "image_ratio": "original",
+                "image_link": "",
+                "open_in_new_tab": false,
+                "width_custom_desktop": 160,
+                "width_custom_mobile": 160,
+                "corner_radius": "inherit",
+                "custom_corner_radius": 0
+              },
+              "blocks": {}
+            },
+            "marquee_image_phB43z": {
+              "type": "_marquee-image",
+              "name": "Image",
+              "settings": {
+                "image": "shopify://shop_images/clare-brand-5.png",
                 "image_ratio": "original",
                 "image_link": "",
                 "open_in_new_tab": false,
@@ -2077,6 +2093,7 @@
               "type": "_marquee-image",
               "name": "Image",
               "settings": {
+                "image": "shopify://shop_images/clare-brand-4.png",
                 "image_ratio": "original",
                 "image_link": "",
                 "open_in_new_tab": false,
@@ -2091,6 +2108,7 @@
               "type": "_marquee-image",
               "name": "Image",
               "settings": {
+                "image": "shopify://shop_images/clare-brand-3.png",
                 "image_ratio": "original",
                 "image_link": "",
                 "open_in_new_tab": false,
@@ -2105,6 +2123,7 @@
               "type": "_marquee-image",
               "name": "Image",
               "settings": {
+                "image": "shopify://shop_images/clare-brand-2.png",
                 "image_ratio": "original",
                 "image_link": "",
                 "open_in_new_tab": false,
@@ -2119,6 +2138,7 @@
               "type": "_marquee-image",
               "name": "Image",
               "settings": {
+                "image": "shopify://shop_images/clare-brand-1.png",
                 "image_ratio": "original",
                 "image_link": "",
                 "open_in_new_tab": false,
@@ -2132,6 +2152,7 @@
           },
           "block_order": [
             "marquee_image_LT3BQL",
+            "marquee_image_phB43z",
             "marquee_image_AVbWiL",
             "marquee_image_ejyHMx",
             "marquee_image_fC43nV",
@@ -2156,11 +2177,11 @@
         "gap_mobile": 32,
         "color_scheme": "scheme-1",
         "background_color": "#ffffff",
-        "padding_top": 0,
-        "padding_bottom": 0,
-        "customize_mobile_padding": false,
-        "padding_top_mobile": 0,
-        "padding_bottom_mobile": 0
+        "padding_top": 40,
+        "padding_bottom": 80,
+        "customize_mobile_padding": true,
+        "padding_top_mobile": 10,
+        "padding_bottom_mobile": 56
       }
     }
   },
