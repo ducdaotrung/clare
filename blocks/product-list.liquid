@@ -27,6 +27,10 @@
   unless product_list_mobile_layout == 'grid' or product_list_mobile_layout == 'carousel'
     assign product_list_mobile_layout = 'carousel'
   endunless
+  assign product_list_show_next_slide_preview_mobile = false
+  if product_list_mobile_layout == 'carousel' and block.settings.show_next_slide_preview_on_mobile
+    assign product_list_show_next_slide_preview_mobile = true
+  endif
   assign product_list_mobile_carousel = false
   assign product_list_has_carousel = false
   if product_list_mobile_layout == 'carousel'
@@ -288,7 +292,7 @@
       item_class: 'product-list__item',
       items_data_attributes: 'data-product-list-items',
       next_slide_preview: product_list_show_next_slide_preview,
-      next_slide_preview_on_mobile: block.settings.show_next_slide_preview_on_mobile,
+      next_slide_preview_on_mobile: product_list_show_next_slide_preview_mobile,
       carousel_id: product_list_carousel_id,
       aria_label: product_list_aria_label,
       previous_selector: '[data-product-list-previous]',
