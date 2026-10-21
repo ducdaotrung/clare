@@ -18,6 +18,10 @@
   if block.settings.show_next_slide_preview_on_desktop
     assign carousel_show_next_slide_preview = true
   endif
+  assign carousel_show_next_slide_preview_mobile = false
+  if block.settings.show_next_slide_preview_on_mobile
+    assign carousel_show_next_slide_preview_mobile = true
+  endif
 
   assign carousel_gap_desktop = block.settings.gap_desktop | default: 4 | plus: 0
   assign carousel_gap_mobile = block.settings.gap_mobile | default: 4 | plus: 0
@@ -201,7 +205,8 @@
       autoplay: carousel_autoplay,
       pause_on_hover: carousel_pause_on_hover,
       autoplay_delay: carousel_delay,
-      show_next_slide_preview: carousel_show_next_slide_preview
+      show_next_slide_preview: carousel_show_next_slide_preview,
+      show_next_slide_preview_on_mobile: carousel_show_next_slide_preview_mobile
     %}
     {{ carousel_navigation_markup }}
 
@@ -236,6 +241,9 @@
   "name": "t:general.carousel",
   "tag": null,
   "blocks": [
+    {
+      "type": "collection-category"
+    },
     {
       "type": "slide"
     }
@@ -297,6 +305,12 @@
       "type": "checkbox",
       "id": "show_next_slide_preview_on_desktop",
       "label": "t:labels.show_next_slide_preview_on_desktop",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_next_slide_preview_on_mobile",
+      "label": "t:labels.show_next_slide_preview_on_mobile",
       "default": false
     },
     {

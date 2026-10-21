@@ -1915,24 +1915,24 @@ legend {
 
 .product-card__badges {
   position: absolute;
-  top: 0.75rem;
-  left: 0.75rem;
+  top: 12px;
+  left: 12px;
   z-index: var(--z-base, 10);
   display: flex;
   flex-wrap: wrap;
-  max-width: calc(100% - 1.5rem);
+  max-width: calc(100% - 24px);
   gap: 0.35rem;
 }
 
 .product-card__media-overlay {
   position: absolute;
-  top: 0.75rem;
-  left: 0.75rem;
+  top: 12px;
+  left: 12px;
   z-index: var(--z-base, 10);
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  max-width: calc(100% - 1.5rem);
+  max-width: calc(100% - 24px);
   gap: 0.35rem;
 }
 

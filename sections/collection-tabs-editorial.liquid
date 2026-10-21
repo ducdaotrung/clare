@@ -320,7 +320,34 @@
   .section-collection-tabs-editorial .collection-tabs__layout > * { width: 100%; min-width: 0; }
   .section-collection-tabs-editorial .collection-tabs__layout > .block-header { align-self: center; }
   .section-collection-tabs-editorial .collection-tabs__layout > .button-block { align-self: center; width: fit-content; }
-  @media (max-width: 767.98px) { .section-collection-tabs-editorial .collection-tabs__layout { gap: var(--collection-tabs-gap-mobile, 16px); } }
+  .section-collection-tabs-editorial .collection-tabs__layout[data-collection-tabs-ready='true'] > .collection-tab:not([data-tab-active='true']) { display: none; }
+  .section-collection-tabs-editorial .collection-tab__carousel-navigation {
+    top: var(--collection-tab-navigation-image-center, calc(50% - var(--swiper-navigation-center-offset, 0px)));
+    left: -22px;
+    right: -22px;
+    padding-inline: 0;
+  }
+  .section-collection-tabs-editorial .collection-tab__carousel-navigation--outside .swiper-nav-button--prev,
+  .section-collection-tabs-editorial .collection-tab__carousel-navigation--outside .swiper-nav-button--next {
+    margin-inline: 0;
+  }
+  @media (max-width: 767.98px) {
+    .section-collection-tabs-editorial .collection-tabs__layout { gap: var(--collection-tabs-gap-mobile, 16px); }
+    .section-collection-tabs-editorial [data-layout-direction] .tab-layout[data-vertical-layout] .tab-layout__navigation {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      justify-content: flex-start;
+      width: 100%;
+      min-width: 0;
+      max-width: 100%;
+      overflow-x: auto;
+      overflow-y: hidden;
+      overscroll-behavior-inline: contain;
+      touch-action: pan-x;
+    }
+    .section-collection-tabs-editorial .tab-layout .tab-layout__navigation[hidden] { display: none; }
+  }
 {% endstylesheet %}
 
 {% schema %}
@@ -332,7 +359,6 @@
       "index"
     ]
   },
-  "max_blocks": 8,
   "blocks": [
     {
       "type": "header"
@@ -475,6 +501,13 @@
       "type": "checkbox",
       "id": "show_next_slide_preview_on_desktop",
       "label": "t:labels.show_next_slide_preview_on_desktop",
+      "default": false,
+      "visible_if": "{{ section.settings.layout_type == 'carousel' }}"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_next_slide_preview_on_mobile",
+      "label": "t:labels.show_next_slide_preview_on_mobile",
       "default": false,
       "visible_if": "{{ section.settings.layout_type == 'carousel' }}"
     },

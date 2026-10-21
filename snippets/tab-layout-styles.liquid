@@ -1,5 +1,7 @@
 {% stylesheet %}
   .tab-layout {
+    padding-top: var(--tab-layout-padding-top, 0px);
+    padding-bottom: var(--tab-layout-padding-bottom, 0px);
     display: grid;
     gap: var(--tab-layout-gap-desktop, 16px);
     width: 100%;
@@ -11,8 +13,7 @@
     align-items: center;
     justify-content: var(--collection-tabs-controls-alignment, flex-start);
     flex-wrap: wrap;
-    column-gap: calc(var(--layout-grid-gap, 24px) * 0.75);
-    row-gap: 0.5rem;
+    gap: var(--tab-layout-gap-desktop, 16px);
     max-width: 100%;
     padding-block: 0;
   }
@@ -68,8 +69,6 @@
 
   .tab-layout--button .tab-layout__navigation {
     align-items: center;
-    column-gap: 0.4rem;
-    row-gap: 0.4rem;
     padding-block: 0;
   }
 
@@ -120,13 +119,14 @@
 
   @media (max-width: 767.98px) {
     .tab-layout {
+      padding-top: var(--tab-layout-padding-top-mobile, var(--tab-layout-padding-top, 0px));
+      padding-bottom: var(--tab-layout-padding-bottom-mobile, var(--tab-layout-padding-bottom, 0px));
       gap: var(--tab-layout-gap-mobile, var(--tab-layout-gap-desktop, 16px));
     }
 
     .tab-layout__navigation {
       justify-content: var(--collection-tabs-controls-alignment-mobile, var(--collection-tabs-controls-alignment, flex-start));
-      column-gap: calc(var(--layout-grid-gap, 24px) * 0.6);
-      row-gap: 0.45rem;
+      gap: var(--tab-layout-gap-mobile, var(--tab-layout-gap-desktop, 16px));
     }
 
     [data-layout-direction='horizontal'] .tab-layout[data-vertical-layout='true'] .tab-layout__navigation {

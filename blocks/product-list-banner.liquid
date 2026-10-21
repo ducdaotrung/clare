@@ -68,12 +68,15 @@
   items_content: product_list_banner_items_content
 %}
 
+{% content_for 'block', type: 'featured-banner-view-all', id: 'view-all', closest.collection: product_list_banner_collection %}
+
 {% schema %}
 {
   "name": "t:general.product_list",
   "tag": null,
   "blocks": [
-    { "type": "product-card" }
+    { "type": "product-card" },
+    { "type": "featured-banner-view-all" }
   ],
   "settings": [
     {
@@ -178,6 +181,11 @@
             "color_type": "inherit",
             "color_scheme": "scheme-1"
           }
+        },
+        {
+          "type": "featured-banner-view-all",
+          "id": "view-all",
+          "static": true
         }
       ]
     }

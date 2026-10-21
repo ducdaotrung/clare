@@ -95,6 +95,35 @@
     min-width: 0;
   }
 
+  .featured-collection-banner__view-all {
+    min-width: 0;
+    padding: var(--featured-banner-view-all-padding-top, 0px) var(--featured-banner-view-all-padding-right, 0px) var(--featured-banner-view-all-padding-bottom, 0px) var(--featured-banner-view-all-padding-left, 0px);
+  }
+
+  .featured-collection-banner__view-all--width-fill .featured-collection-banner__view-all-link {
+    width: 100%;
+  }
+
+  @media (max-width: 767.98px) {
+    .featured-collection-banner__view-all {
+      order: 100;
+      display: flex;
+      flex: 0 0 100%;
+      justify-content: center;
+      width: 100%;
+      margin-left: 0;
+      padding: var(--featured-banner-view-all-padding-top-mobile, var(--featured-banner-view-all-padding-top, 0px)) var(--featured-banner-view-all-padding-right-mobile, var(--featured-banner-view-all-padding-right, 0px)) var(--featured-banner-view-all-padding-bottom-mobile, var(--featured-banner-view-all-padding-bottom, 0px)) var(--featured-banner-view-all-padding-left-mobile, var(--featured-banner-view-all-padding-left, 0px));
+    }
+
+    .featured-collection-banner__view-all--width-mobile-fill .featured-collection-banner__view-all-link {
+      width: 100%;
+    }
+
+    .featured-collection-banner__view-all--width-fill.featured-collection-banner__view-all--width-mobile-fit .featured-collection-banner__view-all-link {
+      width: auto;
+    }
+  }
+
   .container.full-width.featured-collection-banner__container--no-padding {
     padding-inline: 0;
   }
@@ -148,6 +177,27 @@
       gap: var(--featured-collection-banner-gap-desktop, 30px);
     }
 
+    .featured-collection-banner__content:has(> .block-header:nth-child(1 of .block-header, .image-card--featured-collection-banner, .product-list-banner)) { --featured-banner-view-all-order: 1; }
+    .featured-collection-banner__content:has(> .block-header:nth-child(2 of .block-header, .image-card--featured-collection-banner, .product-list-banner)) { --featured-banner-view-all-order: 2; }
+    .featured-collection-banner__content:has(> .block-header:nth-child(3 of .block-header, .image-card--featured-collection-banner, .product-list-banner)) { --featured-banner-view-all-order: 3; }
+
+    .featured-collection-banner__content:has(> .featured-collection-banner__view-all) > .block-header {
+      flex: 1 1 0;
+      width: auto;
+      max-width: none;
+    }
+
+    .featured-collection-banner__content > .featured-collection-banner__view-all {
+      order: var(--featured-banner-view-all-order, 1);
+      flex: 0 0 auto;
+      align-self: flex-end;
+      margin-left: auto;
+    }
+
+    .featured-collection-banner__content > .featured-collection-banner__view-all--width-fill {
+      flex: 0 1 30%;
+    }
+
     .featured-collection-banner__content > :is(.image-card--featured-collection-banner, .product-list-banner) {
       flex-basis: calc((100% - var(--featured-collection-banner-gap-desktop, 30px)) / 2);
       position: sticky;
@@ -157,6 +207,41 @@
 
     .featured-collection-banner__content:not(:has(> :nth-child(2 of .image-card--featured-collection-banner, .product-list-banner))) > :is(.image-card--featured-collection-banner, .product-list-banner) {
       flex-basis: 100%;
+    }
+
+    /* Keep the header and its action together above the banner/product pair. */
+    .featured-collection-banner__content:has(> .block-header:nth-child(1 of .block-header, .image-card--featured-collection-banner, .product-list-banner)):has(> .image-card--featured-collection-banner):has(> .product-list-banner):has(> .featured-collection-banner__view-all) {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .featured-collection-banner__content:has(> .block-header:nth-child(1 of .block-header, .image-card--featured-collection-banner, .product-list-banner)):has(> .image-card--featured-collection-banner):has(> .product-list-banner):has(> .featured-collection-banner__view-all) > .block-header {
+      grid-column: 1 / -1;
+      grid-row: 1;
+      padding-right: max(var(--header-padding-right, 0px), 9rem);
+    }
+
+    .featured-collection-banner__content:has(> .block-header:nth-child(1 of .block-header, .image-card--featured-collection-banner, .product-list-banner)):has(> .image-card--featured-collection-banner):has(> .product-list-banner):has(> .featured-collection-banner__view-all) > .featured-collection-banner__view-all {
+      grid-column: 2;
+      grid-row: 1;
+      justify-self: end;
+      align-self: end;
+      margin-left: 0;
+      z-index: 1;
+    }
+
+    .featured-collection-banner__content:has(> .block-header:nth-child(1 of .block-header, .image-card--featured-collection-banner, .product-list-banner)):has(> .image-card--featured-collection-banner):has(> .product-list-banner):has(> .featured-collection-banner__view-all) > :is(.image-card--featured-collection-banner, .product-list-banner) {
+      grid-row: 2;
+    }
+
+    .featured-collection-banner__content[data-banner-position="before"]:has(> .block-header:nth-child(1 of .block-header, .image-card--featured-collection-banner, .product-list-banner)) > .image-card--featured-collection-banner,
+    .featured-collection-banner__content[data-banner-position="after"]:has(> .block-header:nth-child(1 of .block-header, .image-card--featured-collection-banner, .product-list-banner)) > .product-list-banner {
+      grid-column: 1;
+    }
+
+    .featured-collection-banner__content[data-banner-position="before"]:has(> .block-header:nth-child(1 of .block-header, .image-card--featured-collection-banner, .product-list-banner)) > .product-list-banner,
+    .featured-collection-banner__content[data-banner-position="after"]:has(> .block-header:nth-child(1 of .block-header, .image-card--featured-collection-banner, .product-list-banner)) > .image-card--featured-collection-banner {
+      grid-column: 2;
     }
   }
 
@@ -401,6 +486,11 @@
                 "color_type": "inherit",
                 "color_scheme": "scheme-1"
               }
+            },
+            {
+              "type": "featured-banner-view-all",
+              "id": "view-all",
+              "static": true
             }
           ]
         }

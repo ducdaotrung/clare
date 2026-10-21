@@ -543,16 +543,23 @@ const initialize = (root) => {
   const loop = root.dataset.carouselLoop === 'true';
   const manualLoopRequested = root.dataset.carouselManualLoop === 'true';
   const showNextSlidePreview = viewport.dataset.swiperNextSlidePreview === 'true';
+  const showNextSlidePreviewMobile = viewport.dataset.swiperNextSlidePreviewMobile === 'true';
   const desktopColumns = number(root.dataset.swiperColumnsDesktop, 4);
+  const mobileColumns = number(root.dataset.swiperColumnsMobile, 1);
   const slideCount = Array.from(wrapper.children).filter((slide) => slide.classList.contains('swiper-slide')).length;
   const previewEnabled = showNextSlidePreview && slideCount > desktopColumns;
+  const mobilePreviewEnabled = showNextSlidePreviewMobile && slideCount > mobileColumns;
   viewport.dataset.swiperNextSlidePreview = String(previewEnabled);
+  viewport.dataset.swiperNextSlidePreviewMobile = String(mobilePreviewEnabled);
   // The shared Swiper preview attribute is a CSS-only overflow hook. Sections
   // that require centered-slide runtime must opt in explicitly on their root.
   const useCenteredSlidePreview = root.dataset.showNextSlidePreviewOnDesktop === 'true';
   const transition = root.dataset.transition === 'fade' ? 'fade' : 'slide';
   const fade = transition === 'fade' && !useCenteredSlidePreview;
-  if (fade) viewport.dataset.swiperNextSlidePreview = 'false';
+  if (fade) {
+    viewport.dataset.swiperNextSlidePreview = 'false';
+    viewport.dataset.swiperNextSlidePreviewMobile = 'false';
+  }
   const manualLoop = manualLoopRequested && loop ? createManualLoop(viewport) : null;
   const paginationModules = pagination && !manualLoop ? [Pagination] : [];
   const modules = fade ? [EffectFade, ...paginationModules] : paginationModules;
@@ -563,7 +570,7 @@ const initialize = (root) => {
     ...(fade ? { fadeEffect: { crossFade: true } } : {}),
     preventInteractionOnTransition: true,
     speed: prefersReducedMotion() ? 0 : 600,
-    slidesPerView: fade ? 1 : number(root.dataset.swiperColumnsMobile, 1),
+    slidesPerView: fade ? 1 : mobileColumns + (mobilePreviewEnabled ? 0.2 : 0),
     spaceBetween: fade ? 0 : number(root.dataset.swiperGapMobile, 12),
     breakpoints: {
       [desktopBreakpoint]: {

@@ -21,6 +21,11 @@
 
   assign tab_layout_vertical_layout = block.settings.vertical_layout
 
+  assign tab_layout_padding_top = block.settings.padding_top | default: 0 | plus: 0 | at_least: 0 | at_most: 100
+  assign tab_layout_padding_bottom = block.settings.padding_bottom | default: 0 | plus: 0 | at_least: 0 | at_most: 100
+  assign tab_layout_padding_top_mobile = block.settings.padding_top_mobile | default: 0 | plus: 0 | at_least: 0 | at_most: 100
+  assign tab_layout_padding_bottom_mobile = block.settings.padding_bottom_mobile | default: 0 | plus: 0 | at_least: 0 | at_most: 100
+
   assign tab_layout_gap_desktop = block.settings.gap_desktop | default: 16 | plus: 0
   if tab_layout_gap_desktop < 0 or tab_layout_gap_desktop > 100
     assign tab_layout_gap_desktop = 16
@@ -47,6 +52,23 @@
   assign tab_layout_custom_size = block.settings.custom_heading_size | default: 24 | plus: 0
   if tab_layout_custom_size < 10 or tab_layout_custom_size > 100
     assign tab_layout_custom_size = 24
+  endif
+
+  if tab_layout_font == 'heading'
+    case block.settings.heading_tag
+      when 'h1'
+        assign tab_layout_font_size = 'display'
+      when 'h2'
+        assign tab_layout_font_size = 'xl'
+      when 'h3'
+        assign tab_layout_font_size = 'lg'
+      when 'h4'
+        assign tab_layout_font_size = 'md'
+      when 'h5'
+        assign tab_layout_font_size = 'sm'
+      when 'h6'
+        assign tab_layout_font_size = 'xs'
+    endcase
   endif
 
   assign tab_layout_font_family = 'var(--font-heading-family)'
@@ -151,6 +173,12 @@
 %}
 
 {% capture tab_layout_style_attribute %}
+  {% if tab_layout_padding_top != 0 %}--tab-layout-padding-top: {{ tab_layout_padding_top }}px;{% endif %}
+  {% if tab_layout_padding_bottom != 0 %}--tab-layout-padding-bottom: {{ tab_layout_padding_bottom }}px;{% endif %}
+  {% if block.settings.customize_mobile_padding %}
+    {% if tab_layout_padding_top_mobile != tab_layout_padding_top %}--tab-layout-padding-top-mobile: {{ tab_layout_padding_top_mobile }}px;{% endif %}
+    {% if tab_layout_padding_bottom_mobile != tab_layout_padding_bottom %}--tab-layout-padding-bottom-mobile: {{ tab_layout_padding_bottom_mobile }}px;{% endif %}
+  {% endif %}
   --tab-layout-gap-desktop: {{ tab_layout_gap_desktop }}px;
   --tab-layout-gap-mobile: {{ tab_layout_gap_mobile }}px;
   --tab-layout-font-family: {{ tab_layout_font_family }};
@@ -769,6 +797,22 @@
     },
     {
       "type": "select",
+      "id": "heading_tag",
+      "label": "Heading style",
+      "options": [
+        { "value": "existing", "label": "Use size setting" },
+        { "value": "h1", "label": "H1" },
+        { "value": "h2", "label": "H2" },
+        { "value": "h3", "label": "H3" },
+        { "value": "h4", "label": "H4" },
+        { "value": "h5", "label": "H5" },
+        { "value": "h6", "label": "H6" }
+      ],
+      "default": "existing",
+      "visible_if": "{{ block.settings.font == 'heading' }}"
+    },
+    {
+      "type": "select",
       "id": "heading_size",
       "label": "t:labels.heading_size",
       "options": [
@@ -780,7 +824,8 @@
         { "value": "xs", "label": "t:options.heading_size.xs" },
         { "value": "custom", "label": "t:options.heading_size.custom" }
       ],
-      "default": "lg"
+      "default": "lg",
+      "visible_if": "{{ block.settings.font != 'heading' or block.settings.heading_tag == 'existing' }}"
     },
     {
       "type": "range",
@@ -791,8 +836,14 @@
       "step": 1,
       "unit": "px",
       "default": 24,
-      "visible_if": "{{ block.settings.heading_size == 'custom' }}"
-    }
+      "visible_if": "{{ block.settings.heading_size == 'custom' and block.settings.font != 'heading' or block.settings.heading_size == 'custom' and block.settings.heading_tag == 'existing' }}"
+    },
+    {"type":"header","content":"t:general.padding"},
+    {"type":"range","id":"padding_top","label":"t:labels.top_padding","min":0,"max":100,"step":1,"unit":"px","default":0},
+    {"type":"range","id":"padding_bottom","label":"t:labels.bottom_padding","min":0,"max":100,"step":1,"unit":"px","default":0},
+    {"type":"checkbox","id":"customize_mobile_padding","label":"t:labels.customize_mobile_padding","default":false},
+    {"type":"range","id":"padding_top_mobile","label":"t:labels.mobile_top_padding","min":0,"max":100,"step":1,"unit":"px","default":0,"visible_if":"{{ block.settings.customize_mobile_padding }}"},
+    {"type":"range","id":"padding_bottom_mobile","label":"t:labels.mobile_bottom_padding","min":0,"max":100,"step":1,"unit":"px","default":0,"visible_if":"{{ block.settings.customize_mobile_padding }}"}
   ],
   "presets": [
     {

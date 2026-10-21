@@ -28,10 +28,8 @@ const getSlidesPerView = (value) => {
 const getMobileSlidesPerView = (carousel) => {
   const columns = getSlidesPerView(carousel.dataset.swiperColumnsMobile);
 
-  // The preview is intended for a one-column mobile layout. Keep an explicit
-  // two-column choice intact instead of silently replacing it with 1.2.
-  if (columns === 1 && carousel.dataset.swiperNextSlidePreviewMobile === 'true') {
-    return 1.2;
+  if (carousel.dataset.swiperNextSlidePreviewMobile === 'true') {
+    return columns + 0.2;
   }
 
   return columns;
@@ -125,9 +123,31 @@ const observeVisibility = (state) => {
   if (!panel || typeof MutationObserver === 'undefined') return;
 
   state.visibilityObserver = new MutationObserver(() => {
-    if (!panel.hidden) window.requestAnimationFrame(() => state.swiper.update());
+    if (!panel.hidden) window.requestAnimationFrame(() => {
+      state.swiper.update();
+      updateNavigationPosition(state);
+    });
   });
   state.visibilityObserver.observe(panel, { attributes: true, attributeFilter: ['hidden'] });
+};
+
+const updateNavigationPosition = (state) => {
+  const navigation = state.scope.querySelector('[data-collection-carousel-navigation]');
+  const media = state.carousel.querySelector('.product-card__media');
+  if (!navigation || !media) return;
+  const mediaRect = media.getBoundingClientRect();
+  const containerRect = navigation.offsetParent?.getBoundingClientRect();
+  if (!containerRect || mediaRect.height === 0) return;
+  navigation.style.setProperty('--collection-tab-navigation-image-center', `${mediaRect.top - containerRect.top + mediaRect.height / 2}px`);
+};
+
+const observeNavigationPosition = (state) => {
+  const media = state.carousel.querySelector('.product-card__media');
+  if (!media || !state.scope.querySelector('[data-collection-carousel-navigation]')) return;
+  updateNavigationPosition(state);
+  if (typeof ResizeObserver === 'undefined') return;
+  state.mediaResizeObserver = new ResizeObserver(() => updateNavigationPosition(state));
+  state.mediaResizeObserver.observe(media);
 };
 
 const initialize = (carousel) => {
@@ -141,6 +161,7 @@ const initialize = (carousel) => {
     autoplayCleanup: null,
     resizeCleanup: null,
     visibilityObserver: null,
+    mediaResizeObserver: null,
     mobileQuery: null,
     mobileQueryHandler: null,
   };
@@ -180,6 +201,7 @@ const initialize = (carousel) => {
   startAutoplay(state);
   state.resizeCleanup = observeSwiperResize(swiper, carousel);
   observeVisibility(state);
+  observeNavigationPosition(state);
 };
 
 const initializeRoot = (root = document) => {
@@ -196,6 +218,7 @@ const destroy = (carousel) => {
   state.autoplayCleanup?.();
   state.resizeCleanup?.();
   state.visibilityObserver?.disconnect();
+  state.mediaResizeObserver?.disconnect();
   state.mobileQuery?.removeEventListener('change', state.mobileQueryHandler);
   if (state.swiper) destroySwiperCarousel(state.swiper);
   instances.delete(carousel);

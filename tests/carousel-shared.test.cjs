@@ -7,14 +7,14 @@ const schema = (file) => JSON.parse(read(file).match(/{% schema %}([\s\S]*?){% e
 
 test('common schemas expose only the reference settings and choices', () => {
   const expected = {
-    carousel: ['columns_desktop', 'columns_mobile', 'show_next_slide_preview_on_desktop', 'gap_desktop', 'gap_mobile', 'width', 'custom_width', 'show_navigation_on_desktop', 'navigation_position', 'navigation_style', 'navigation_icon', 'navigation_behavior', 'pagination_type', 'show_pagination_on_desktop', 'pagination_padding_desktop', 'show_pagination_on_mobile', 'pagination_padding_mobile', 'pagination_limit_width', 'pagination_max_width', 'autoplay', 'pause_on_hover', 'autoplay_speed', 'padding_top', 'padding_bottom', 'customize_mobile_padding', 'padding_top_mobile', 'padding_bottom_mobile'],
+    carousel: ['columns_desktop', 'columns_mobile', 'show_next_slide_preview_on_desktop', 'show_next_slide_preview_on_mobile', 'gap_desktop', 'gap_mobile', 'width', 'custom_width', 'show_navigation_on_desktop', 'navigation_position', 'navigation_style', 'navigation_icon', 'navigation_behavior', 'pagination_type', 'show_pagination_on_desktop', 'pagination_padding_desktop', 'show_pagination_on_mobile', 'pagination_padding_mobile', 'pagination_limit_width', 'pagination_max_width', 'autoplay', 'pause_on_hover', 'autoplay_speed', 'padding_top', 'padding_bottom', 'customize_mobile_padding', 'padding_top_mobile', 'padding_bottom_mobile'],
     slide: ['direction', 'position', 'position_horizontal', 'horizontal_alignment', 'customize_mobile_alignment', 'alignment', 'alignment_mobile', 'gap_desktop', 'gap_mobile', 'height', 'border_thickness', 'corner_radius', 'custom_radius', 'shadow', 'background_media', 'background_image', 'background_video', 'show_overlay', 'overlay_color', 'backdrop_blur', 'appearance_type', 'color_scheme', 'link', 'open_in_new_tab', 'padding_top', 'padding_bottom', 'padding_left', 'padding_right', 'customize_mobile_padding', 'padding_top_mobile', 'padding_bottom_mobile', 'padding_left_mobile', 'padding_right_mobile'],
   };
   for (const type of Object.keys(expected)) {
     const definition = schema(`blocks/${type}.liquid`);
     assert.deepEqual(definition.settings.filter((s) => s.id).map((s) => s.id).sort(), expected[type].sort());
   }
-  assert.deepEqual(schema('blocks/carousel.liquid').blocks, [{ type: 'slide' }]);
+  assert.deepEqual(schema('blocks/carousel.liquid').blocks, [{ type: 'collection-category' }, { type: 'slide' }]);
   const slide = schema('blocks/slide.liquid');
   assert.deepEqual(slide.settings.find((s) => s.id === 'corner_radius').options.map((o) => o.value), ['inherit', 'square', 'rounded', 'custom']);
   assert.deepEqual(slide.settings.find((s) => s.id === 'shadow').options.map((o) => o.value), ['none', 'extra_small', 'small']);
