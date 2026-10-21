@@ -9,6 +9,7 @@
   @param {product[]} [products] - Explicit native product resources when the source is not a collection
   @param {number} [max_products] - Maximum number of products to render
   @param {string} [layout_type] - Grid or carousel presentation
+  @param {string} [layout_type_mobile] - Optional mobile layout override
   @param {string} [columns_desktop] - Desktop column setting
   @param {string} [columns_mobile] - Mobile column setting
   @param {boolean} [enable_swipe_mobile] - Whether to enable mobile swipe
@@ -60,6 +61,11 @@
   assign product_collection_grid_mobile_carousel = false
   if mobile_carousel == true or mobile_carousel == 'true'
     assign product_collection_grid_mobile_carousel = true
+  endif
+
+  assign product_collection_grid_mobile_grid = false
+  if product_collection_grid_layout == 'carousel' and layout_type_mobile == 'grid'
+    assign product_collection_grid_mobile_grid = true
   endif
 
   assign product_collection_grid_pagination_type = pagination_type | default: 'bullets'
@@ -191,6 +197,9 @@
   if product_collection_grid_mobile_carousel and product_collection_grid_layout == 'grid'
     assign product_collection_grid_class = product_collection_grid_class | append: ' product-collection-grid--mobile-carousel'
   endif
+  if product_collection_grid_mobile_grid
+    assign product_collection_grid_class = product_collection_grid_class | append: ' product-collection-grid--mobile-grid'
+  endif
   if product_collection_grid_is_placeholder
     assign product_collection_grid_class = product_collection_grid_class | append: ' product-collection-grid--placeholder'
   endif
@@ -200,7 +209,7 @@
 %}
 
 {% capture product_collection_grid_style %}
-  {% if product_collection_grid_layout == 'grid' %}
+  {% if product_collection_grid_layout == 'grid' or product_collection_grid_mobile_grid %}
     --product-collection-grid-columns-desktop: {{ product_collection_grid_columns_desktop }};
     --product-collection-grid-columns-mobile: {{ product_collection_grid_columns_mobile }};
     --product-collection-grid-gap-horizontal: {{ product_collection_grid_gap_horizontal }}px;
@@ -245,6 +254,7 @@
     {% capture product_collection_grid_carousel_attributes %}
       data-product-collection-grid
       data-layout="carousel"
+      {% if product_collection_grid_mobile_grid %}data-swiper-desktop-only="true"{% endif %}
       data-product-carousel
       data-swiper-columns-desktop="{{ product_collection_grid_columns_desktop }}"
       data-swiper-columns-mobile="{{ product_collection_grid_columns_mobile }}"
@@ -306,6 +316,7 @@
       content: product_collection_grid_content,
       root_class: product_collection_grid_class,
       root_attributes: product_collection_grid_mobile_carousel_attributes,
+      show_next_slide_preview_on_mobile: next_slide_preview_on_mobile,
       aria_label: product_collection_grid_aria_label
     %}
   {% else %}
