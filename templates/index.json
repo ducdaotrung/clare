@@ -1846,7 +1846,7 @@
             "columns_mobile": "1",
             "enable_swipe_mobile": false,
             "gap_horizontal": 28,
-            "gap_vertical": 28,
+            "gap_vertical": 0,
             "gap_horizontal_mobile": 0,
             "gap_vertical_mobile": 20,
             "width": "fill",
