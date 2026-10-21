@@ -450,7 +450,8 @@
                     "font_size": "xs",
                     "padding_top": 0,
                     "padding_bottom": 0,
-                    "customize_mobile_padding": false
+                    "customize_mobile_padding": false,
+                    "max_tag": 1
                   }
                 },
                 {
@@ -468,13 +469,13 @@
                   "type": "blog-card-meta",
                   "settings": {
                     "show_date": true,
-                    "show_author": true,
+                    "show_author": false,
                     "show_comment_count": false,
                     "details_order": "author_date_comment",
                     "author_display_type": "text",
                     "author_prefix": "",
                     "show_date_icon": false,
-                    "date_format": "medium",
+                    "date_format": "long",
                     "show_comment_icon": false,
                     "layout": "horizontal",
                     "gap": 8,
@@ -483,8 +484,17 @@
                     "size": "xs",
                     "padding_top": 0,
                     "padding_bottom": 0,
-                    "customize_mobile_padding": false
+                    "customize_mobile_padding": false,
+                    "separator_icon": "none"
                   }
+                },
+                {
+                  "type": "blog-card-description",
+                  "settings": {}
+                },
+                {
+                  "type": "blog-card-button",
+                  "settings": {}
                 }
               ]
             }

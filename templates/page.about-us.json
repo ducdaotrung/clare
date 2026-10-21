@@ -800,6 +800,12 @@
                 "padding_right_mobile": 0
               },
               "blocks": {
+                "blog-card-tag-content": {
+                  "type": "blog-card-tag",
+                  "settings": {
+                    "max_tag": 1
+                  }
+                },
                 "blog-card-title_1": {
                   "type": "blog-card-title",
                   "settings": {
@@ -815,17 +821,17 @@
                   "type": "blog-card-meta",
                   "settings": {
                     "show_date": true,
-                    "show_author": true,
+                    "show_author": false,
                     "show_comment_count": false,
                     "details_order": "date_author_comment",
                     "author_display_type": "text",
                     "author_prefix": "by",
-                    "show_date_icon": true,
+                    "show_date_icon": false,
                     "date_icon": "calendar",
                     "date_format": "long",
                     "show_comment_icon": true,
                     "comment_icon": "comment",
-                    "separator_icon": "vertical-rule",
+                    "separator_icon": "none",
                     "layout": "horizontal",
                     "gap": 12,
                     "icon_size": 18,
@@ -836,6 +842,10 @@
                     "padding_bottom": 0,
                     "customize_mobile_padding": false
                   }
+                },
+                "blog-card-description-content": {
+                  "type": "blog-card-description",
+                  "settings": {}
                 },
                 "blog-card-button_4": {
                   "type": "blog-card-button",
@@ -849,8 +859,10 @@
                 }
               },
               "block_order": [
+                "blog-card-tag-content",
                 "blog-card-title_1",
                 "blog-card-meta_3",
+                "blog-card-description-content",
                 "blog-card-button_4"
               ]
             }

@@ -177,7 +177,7 @@
                   {% render 'icon', icon: blog_card_meta_date_icon, bare: true, class: 'blog-card-meta__icon' %}
                 {% endif %}
                 {% if blog_card_meta_article.published_at != blank %}
-                  <time datetime="{{ blog_card_meta_article.published_at | date: '%Y-%m-%d' }}">{{ blog_card_meta_article.published_at | date: blog_card_meta_date_format }}</time>
+                  <time datetime="{{ blog_card_meta_article.published_at | date: '%Y-%m-%d' }}">{{ blog_card_meta_article.published_at | date: blog_card_meta_date_format | replace: ' 0', ' ' }}</time>
                 {% elsif blog_card_meta_is_placeholder %}
                   <span>February 03, 2026</span>
                 {% endif %}

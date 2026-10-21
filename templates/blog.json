@@ -138,6 +138,12 @@
                 "padding_right_mobile": 0
               },
               "blocks": {
+                "blog-card-tag-content": {
+                  "type": "blog-card-tag",
+                  "settings": {
+                    "max_tag": 1
+                  }
+                },
                 "title": {
                   "type": "blog-card-title",
                   "settings": {
@@ -153,7 +159,7 @@
                   "type": "blog-card-meta",
                   "settings": {
                     "show_date": true,
-                    "show_author": true,
+                    "show_author": false,
                     "size": "sm",
                     "text_color": "",
                     "padding_top": 0,
@@ -161,7 +167,9 @@
                     "customize_mobile_padding": false,
                     "show_date_icon": false,
                     "author_prefix": "",
-                    "separator_icon": "dot"
+                    "separator_icon": "none",
+                    "show_comment_count": false,
+                    "date_format": "long"
                   }
                 },
                 "description": {
@@ -186,6 +194,7 @@
                 }
               },
               "block_order": [
+                "blog-card-tag-content",
                 "title",
                 "meta",
                 "description",
