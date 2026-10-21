@@ -1502,8 +1502,8 @@
               "type": "header",
               "name": "t:general.header",
               "settings": {
-                "width": "fit",
-                "max_width": 750,
+                "width": "custom",
+                "max_width": 650,
                 "customize_mobile_size": false,
                 "width_mobile": "fit",
                 "max_width_mobile": 480,
@@ -1511,7 +1511,7 @@
                 "alignment": "left",
                 "customize_mobile_alignment": false,
                 "alignment_mobile": "left",
-                "gap_desktop": 12,
+                "gap_desktop": 8,
                 "gap_mobile": 8,
                 "padding_top": 0,
                 "padding_bottom": 0,
@@ -1527,10 +1527,10 @@
                 "eyebrow_iy3DCH": {
                   "type": "eyebrow",
                   "settings": {
-                    "text": "<p>New arrivals</p>",
+                    "text": "<p>deal of the week</p>",
                     "font_size": "display",
                     "custom_font_size": 16,
-                    "color": "",
+                    "color": "#FFFFFF",
                     "show_background": false,
                     "show_icon": false,
                     "icon": "circle",
@@ -1552,11 +1552,11 @@
                 "heading_e6t6Cc": {
                   "type": "heading",
                   "settings": {
-                    "text": "<p>Build your base</p>",
+                    "text": "<p>FLASH SALE: UP TO 40% OFF!</p>",
                     "heading_size": "display",
                     "custom_heading_size": 24,
                     "html_tag": "h2",
-                    "text_color": "",
+                    "text_color": "#FFFFFF",
                     "width": "fit",
                     "max_width": 640,
                     "customize_mobile_size": false,
@@ -1577,16 +1577,43 @@
                 "text_QBLPcf": {
                   "type": "text",
                   "settings": {
-                    "text": "<p>A flexible header composition for editorial content and product stories.</p>",
+                    "text": "<p>Don’t miss out—our exclusive deals won’t last forever, and stock is running out fast, so grab yours before it’s gone!</p>",
                     "text_size": "display",
                     "custom_font_size": 16,
                     "height_limit": "none",
-                    "text_color": "",
+                    "text_color": "#FFFFFF",
                     "width": "fit",
                     "max_width": 640,
                     "customize_mobile_size": false,
                     "width_mobile": "fit",
                     "max_width_mobile": 480,
+                    "padding_top": 8,
+                    "padding_bottom": 24,
+                    "padding_left": 0,
+                    "padding_right": 0,
+                    "customize_mobile_padding": false,
+                    "padding_top_mobile": 0,
+                    "padding_bottom_mobile": 0,
+                    "padding_left_mobile": 0,
+                    "padding_right_mobile": 0
+                  },
+                  "blocks": {}
+                },
+                "button_YKHaaX": {
+                  "type": "button",
+                  "name": "t:general.button",
+                  "settings": {
+                    "button_label": "SHOP NOW",
+                    "button_link": "",
+                    "button_open_in_new_tab": false,
+                    "button_style": "primary",
+                    "show_icon": false,
+                    "icon": "arrow_right",
+                    "icon_position": "after",
+                    "icon_size": "inherit",
+                    "icon_width": 20,
+                    "width": "fit",
+                    "width_mobile": "fit",
                     "padding_top": 0,
                     "padding_bottom": 0,
                     "padding_left": 0,
@@ -1603,7 +1630,8 @@
               "block_order": [
                 "eyebrow_iy3DCH",
                 "heading_e6t6Cc",
-                "text_QBLPcf"
+                "text_QBLPcf",
+                "button_YKHaaX"
               ]
             },
             "countdown_timer_TUcytE": {
