@@ -1961,10 +1961,10 @@
                 "ratio_custom": 1,
                 "media_corner_radius": "square",
                 "custom_media_corner_radius": 0,
-                "placement": "below_image",
-                "alignment": "left",
-                "gap_desktop": 4,
-                "gap_mobile": 4,
+                "placement": "on_image",
+                "alignment": "center",
+                "gap_desktop": 28,
+                "gap_mobile": 20,
                 "border_thickness": 0,
                 "corner_radius": "inherit",
                 "shadow": "none",
@@ -1985,10 +1985,10 @@
                   "type": "collection-card-title",
                   "static": true,
                   "settings": {
-                    "show_product_count": true,
-                    "heading_size": "sm",
+                    "show_product_count": false,
+                    "heading_size": "xl",
                     "custom_heading_size": 24,
-                    "html_tag": "h3",
+                    "html_tag": "h2",
                     "product_count_font": "body",
                     "product_count_font_size": "sm",
                     "padding_top": 0,
@@ -2002,17 +2002,29 @@
                     "padding_right_mobile": 0
                   },
                   "blocks": {}
+                },
+                "banner_button": {
+                  "type": "collection-card-button",
+                  "settings": {
+                    "button_label": "SHOP NOW",
+                    "button_style": "primary",
+                    "width": "fit",
+                    "width_mobile": "fit"
+                  },
+                  "blocks": {}
                 }
               },
-              "block_order": []
+              "block_order": [
+                "banner_button"
+              ]
             }
           },
           "block_order": []
         }
       },
-      "name": "t:general.collection_list",
+      "name": "Collection list (custom)",
       "settings": {
-        "section_width": "page_width",
+        "section_width": "full_width",
         "desktop_alignment": "left",
         "mobile_alignment": "left",
         "gap_desktop": 40,
@@ -2023,7 +2035,8 @@
         "padding_bottom": 50,
         "customize_mobile_padding": false,
         "padding_top_mobile": 50,
-        "padding_bottom_mobile": 50
+        "padding_bottom_mobile": 50,
+        "banner_cards": true
       }
     }
   },

@@ -45,7 +45,7 @@
 {% endcapture %}
 {% assign collection_list_style = collection_list_style | strip %}
 
-<div class="collection-list">
+<div class="collection-list{% if section.settings.banner_cards %} collection-list--banner-cards{% endif %}">
   <div
     class="section-spacing collection-list__spacing section-content-scope section-content-surface color-scheme section-color-scope {{ collection_list_scheme }}"
     {% if collection_list_style != blank %}style="{{ collection_list_style }}"{% endif %}
@@ -102,6 +102,24 @@
       padding-bottom: var(--collection-list-padding-bottom-mobile, var(--collection-list-padding-bottom, 50px));
     }
   }
+  .collection-list--banner-cards .collection-list__container {
+    width: calc(100% - 2 * var(--page-margin-current));
+    max-width: 1824px;
+    padding-inline: 0;
+  }
+  .collection-list--banner-cards .collection-card-kernel--on_image .collection-card-kernel__content {
+    inset: 0;
+    justify-content: center;
+    align-items: center;
+    background: none;
+  }
+  .collection-list--banner-cards .collection-card-kernel__media::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(50% 47.94% at 50% 50%, rgba(0, 0, 0, 0.2) 0%, rgba(102, 102, 102, 0) 100%);
+    pointer-events: none;
+  }
 {% endstylesheet %}
 
 {% schema %}
@@ -115,6 +133,12 @@
     { "type": "collection-list-items" }
   ],
   "settings": [
+    {
+      "type": "checkbox",
+      "id": "banner_cards",
+      "label": "Banner card layout",
+      "default": false
+    },
     {
       "type": "header",
       "content": "t:general.layout"
