@@ -1,6 +1,2 @@
-<<<<<<< HEAD
 import{g as getSlideTransformEl}from"./swiper-12.2.0-utils.min.mjs";function effectTarget(e,i){const t=getSlideTransformEl(i);return t!==i&&(t.style.backfaceVisibility="hidden",t.style["-webkit-backface-visibility"]="hidden"),t}export{effectTarget as e};
-=======
-import{g as getSlideTransformEl}from"./swiper-12.2.0-utils.min.mjs";function effectTarget(e,i){const t=getSlideTransformEl(i);return t!==i&&(t.style.backfaceVisibility="hidden",t.style["-webkit-backface-visibility"]="hidden"),t}export{effectTarget as e};
->>>>>>> d73b3dc669ce2e982ec9fa182bb0a1b947fc20e2
 //# sourceMappingURL=effect-target.min.mjs.map
