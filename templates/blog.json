@@ -68,12 +68,11 @@
                 "title": {
                   "type": "blog-card-title",
                   "settings": {
-                    "heading_size": "md",
-                    "html_tag": "h4",
+                    "heading_size": "lg",
+                    "html_tag": "h2",
                     "line_limit": "no_limit",
                     "padding_top": 0,
-                    "padding_bottom": 0,
-                    "customize_mobile_padding": false
+                    "padding_bottom": 0
                   }
                 },
                 "meta": {
@@ -86,8 +85,7 @@
                     "author_prefix": "",
                     "separator_icon": "dot",
                     "padding_top": 0,
-                    "padding_bottom": 0,
-                    "customize_mobile_padding": false
+                    "padding_bottom": 12
                   }
                 },
                 "description": {
@@ -96,8 +94,7 @@
                     "text_limit": "two",
                     "size": "md",
                     "padding_top": 0,
-                    "padding_bottom": 0,
-                    "customize_mobile_padding": false
+                    "padding_bottom": 12
                   }
                 },
                 "button": {
@@ -106,8 +103,7 @@
                     "style": "tertiary",
                     "show_icon": false,
                     "padding_top": 0,
-                    "padding_bottom": 0,
-                    "customize_mobile_padding": false
+                    "padding_bottom": 0
                   }
                 }
               },
