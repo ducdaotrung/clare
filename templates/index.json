@@ -1502,6 +1502,7 @@
               "type": "header",
               "name": "t:general.header",
               "settings": {
+                "mobile_button_after_countdown": true,
                 "width": "custom",
                 "max_width": 650,
                 "customize_mobile_size": false,
@@ -1639,6 +1640,7 @@
               "name": "t:general.countdown_timer",
               "settings": {
                 "style": "with_labels",
+                "digit_tiles": true,
                 "show_background": true,
                 "corner_radius": "square",
                 "type": "recurring",
