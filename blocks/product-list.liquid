@@ -23,6 +23,28 @@
     assign product_list_layout = 'grid'
   endunless
 
+  assign product_list_mobile_layout = block.settings.layout_type_mobile | default: product_list_layout
+  unless product_list_mobile_layout == 'grid' or product_list_mobile_layout == 'carousel'
+    assign product_list_mobile_layout = 'carousel'
+  endunless
+  assign product_list_show_next_slide_preview_mobile = false
+  if product_list_mobile_layout == 'carousel' and block.settings.show_next_slide_preview_on_mobile
+    assign product_list_show_next_slide_preview_mobile = true
+  endif
+  assign product_list_mobile_carousel = false
+  assign product_list_has_carousel = false
+  if product_list_mobile_layout == 'carousel'
+    assign product_list_mobile_carousel = true
+    assign product_list_has_carousel = true
+  endif
+  if product_list_layout == 'carousel'
+    assign product_list_has_carousel = true
+  endif
+  assign product_list_item_layout = 'grid'
+  if product_list_has_carousel
+    assign product_list_item_layout = 'carousel'
+  endif
+
   assign product_list_max_products = block.settings.max_products | default: 6 | plus: 0
   if product_list_max_products < 1 or product_list_max_products > 24
     assign product_list_max_products = 6
@@ -100,6 +122,18 @@
     assign product_list_show_navigation = false
   endif
 
+  assign product_list_show_navigation_mobile = true
+  if block.settings.show_navigation_on_mobile == false or block.settings.show_navigation_on_mobile == 'false'
+    assign product_list_show_navigation_mobile = false
+  endif
+  assign product_list_render_navigation = false
+  if product_list_layout == 'carousel' and product_list_show_navigation
+    assign product_list_render_navigation = true
+  endif
+  if product_list_mobile_layout == 'carousel' and product_list_show_navigation_mobile
+    assign product_list_render_navigation = true
+  endif
+
   assign product_list_pagination_type = block.settings.pagination_type | default: 'progress_bar'
   unless product_list_pagination_type == 'progress_bar' or product_list_pagination_type == 'bullets'
     assign product_list_pagination_type = 'progress_bar'
@@ -139,7 +173,7 @@
   endif
 
   assign product_list_autoplay_enabled = false
-  if product_list_layout == 'carousel' and block.settings.autoplay
+  if product_list_has_carousel and block.settings.autoplay
     assign product_list_autoplay_enabled = true
   endif
 
@@ -180,13 +214,13 @@
           assign product_list_card_placeholder = true
         endif
       %}
-      {% render 'product-list-promo-items', cards: product_list_promo_cards, position: forloop.index, last_position: product_list_last_position, layout: product_list_layout %}
-      <div class="{% if product_list_layout == 'carousel' %}swiper-slide {% endif %}product-collection-grid__item product-card-layout__item product-list__item">
+      {% render 'product-list-promo-items', cards: product_list_promo_cards, position: forloop.index, last_position: product_list_last_position, layout: product_list_item_layout %}
+      <div class="{% if product_list_has_carousel %}swiper-slide {% endif %}product-collection-grid__item product-card-layout__item product-list__item">
         {% content_for 'block', type: 'product-card', id: 'product-card', product: product_list_card_product, closest.product: product_list_card_product, placeholder: product_list_card_placeholder %}
       </div>
     {% endfor %}
   {% endif %}
-  {% render 'product-list-promo-items', cards: product_list_promo_cards, position: product_list_last_position, last_position: product_list_last_position, layout: product_list_layout %}
+  {% render 'product-list-promo-items', cards: product_list_promo_cards, position: product_list_last_position, last_position: product_list_last_position, layout: product_list_item_layout %}
 {% endcapture %}
 
 {% capture product_list_pagination_style %}
@@ -204,7 +238,7 @@
 {% assign product_list_navigation_center_style = product_list_navigation_center_style | strip %}
 
 {% capture product_list_navigation_markup %}
-  {% if product_list_layout == 'carousel' and product_list_show_navigation %}
+  {% if product_list_render_navigation %}
     <div
       class="swiper-carousel__navigation--centered swiper-carousel__navigation--{{ product_list_navigation_behavior }} product-list__navigation product-list__navigation--{{ product_list_navigation_position }}{% if product_list_navigation_position == 'top' %} section-list-layout__navigation{% endif %} product-list__navigation--{{ product_list_navigation_behavior }}"
       data-product-list-navigation
@@ -234,15 +268,16 @@
 {% if product_list_promo_cards contains '<!--promo-card-slot:' %}
   <script data-theme-module="{{ 'product-list-promos.js' | asset_url }}"></script>
 {% endif %}
-{% if product_list_layout == 'carousel' %}
+{% if product_list_has_carousel %}
   <script data-theme-module="{{ 'product-collection-carousel.js' | asset_url }}"></script>
 {% endif %}
 
 <div
-  class="product-list section-list-layout__bridge"
+  class="product-list section-list-layout__bridge{% unless product_list_show_navigation %} product-list--navigation-desktop-hidden{% endunless %}{% unless product_list_show_navigation_mobile %} product-list--navigation-mobile-hidden{% endunless %}"
   data-product-list
   {% if product_list_recommendations %}data-recommendation-intent="{{ block.settings.recommendation_type | default: 'related' }}" data-recommendation-limit="{{ product_list_max_products | at_most: 10 }}" data-recommendation-placeholder="{{ product_list_is_placeholder }}"{% endif %}
   data-layout="{{ product_list_layout }}"
+  data-mobile-layout="{{ product_list_mobile_layout }}"
   data-collection-url="{{ product_list_collection.url | escape }}"
   {{ block.shopify_attributes }}
 >
@@ -254,6 +289,8 @@
       products: product_list_real_items,
       max_products: product_list_max_products,
       layout_type: product_list_layout,
+      layout_type_mobile: product_list_mobile_layout,
+      mobile_carousel: product_list_mobile_carousel,
       columns_desktop: block.settings.columns_desktop,
       columns_mobile: block.settings.columns_mobile,
       gap_horizontal: product_list_gap_desktop,
@@ -267,6 +304,7 @@
       item_class: 'product-list__item',
       items_data_attributes: 'data-product-list-items',
       next_slide_preview: product_list_show_next_slide_preview,
+      next_slide_preview_on_mobile: product_list_show_next_slide_preview_mobile,
       carousel_id: product_list_carousel_id,
       aria_label: product_list_aria_label,
       previous_selector: '[data-product-list-previous]',
@@ -339,12 +377,31 @@
   }
 
   @media (max-width: 767.98px) {
-    .product-list__navigation,
-    .product-list__navigation.product-list__navigation--top {
-      display: none;
-    }
+    .product-list[data-mobile-layout='grid'] .product-list__navigation,
+    .product-list--navigation-mobile-hidden .product-list__navigation { display: none; }
+    .product-list__navigation--outside .swiper-nav-button { margin-inline: 0; }
+    .product-list__navigation .swiper-nav-button { visibility: visible; opacity: 1; transform: none; }
+    .product-list__navigation .swiper-button-disabled { opacity: 0.5; }
+    .product-list__navigation .swiper-button-lock { display: none; }
   }
 
+  @media (max-width: 767.98px) {
+    .product-list[data-mobile-layout='grid'] .product-list__pagination { display: none; }
+  }
+
+  @media (min-width: 768px) {
+    .product-list[data-layout='grid'] .product-list__navigation,
+    .product-list--navigation-desktop-hidden .product-list__navigation { display: none; }
+  }
+  @media (max-width: 767.98px) {
+    .product-list .product-collection-grid--mobile-grid:not(.swiper-initialized) > .swiper-wrapper {
+      display: grid;
+      grid-template-columns: repeat(var(--product-collection-grid-columns-mobile, 1), minmax(0, 1fr));
+      gap: var(--product-collection-grid-gap-vertical-mobile, 4px) var(--product-collection-grid-gap-horizontal-mobile, 4px);
+      transform: none;
+    }
+    .product-list .product-collection-grid--mobile-grid:not(.swiper-initialized) > .swiper-wrapper > .swiper-slide { width: auto; }
+  }
 {% endstylesheet %}
 
 {% schema %}
@@ -424,6 +481,22 @@
     },
     {
       "type": "select",
+      "id": "layout_type_mobile",
+      "label": "Mobile type",
+      "options": [
+        {
+          "value": "grid",
+          "label": "t:options.product_list_layout.grid"
+        },
+        {
+          "value": "carousel",
+          "label": "t:options.product_list_layout.carousel"
+        }
+      ],
+      "default": "carousel"
+    },
+    {
+      "type": "select",
       "id": "columns_desktop",
       "label": "t:labels.desktop_columns",
       "options": [
@@ -474,6 +547,13 @@
       "visible_if": "{{ block.settings.layout_type == 'carousel' }}"
     },
     {
+      "type": "checkbox",
+      "id": "show_next_slide_preview_on_mobile",
+      "label": "t:labels.show_next_slide_preview_on_mobile",
+      "default": false,
+      "visible_if": "{{ block.settings.layout_type_mobile == 'carousel' }}"
+    },
+    {
       "type": "header",
       "content": "t:general.products_gap"
     },
@@ -500,7 +580,7 @@
     {
       "type": "header",
       "content": "t:general.navigation",
-      "visible_if": "{{ block.settings.layout_type == 'carousel' }}"
+      "visible_if": "{{ block.settings.layout_type == 'carousel' or block.settings.layout_type_mobile == 'carousel' }}"
     },
     {
       "type": "checkbox",
@@ -508,6 +588,13 @@
       "label": "t:labels.show_navigation_on_desktop",
       "default": true,
       "visible_if": "{{ block.settings.layout_type == 'carousel' }}"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_navigation_on_mobile",
+      "label": "Show navigation on mobile",
+      "default": true,
+      "visible_if": "{{ block.settings.layout_type_mobile == 'carousel' }}"
     },
     {
       "type": "select",
@@ -528,7 +615,7 @@
         }
       ],
       "default": "inside",
-      "visible_if": "{{ block.settings.layout_type == 'carousel' and block.settings.show_navigation_on_desktop }}"
+      "visible_if": "{{ block.settings.layout_type == 'carousel' or block.settings.layout_type_mobile == 'carousel' }}"
     },
     {
       "type": "select",
@@ -553,7 +640,7 @@
         }
       ],
       "default": "secondary",
-      "visible_if": "{{ block.settings.layout_type == 'carousel' and block.settings.show_navigation_on_desktop }}"
+      "visible_if": "{{ block.settings.layout_type == 'carousel' or block.settings.layout_type_mobile == 'carousel' }}"
     },
     {
       "type": "select",
@@ -574,7 +661,7 @@
         }
       ],
       "default": "chevron",
-      "visible_if": "{{ block.settings.layout_type == 'carousel' and block.settings.show_navigation_on_desktop }}"
+      "visible_if": "{{ block.settings.layout_type == 'carousel' or block.settings.layout_type_mobile == 'carousel' }}"
     },
     {
       "type": "select",
@@ -591,19 +678,19 @@
         }
       ],
       "default": "show_on_hover",
-      "visible_if": "{{ block.settings.layout_type == 'carousel' and block.settings.show_navigation_on_desktop and block.settings.navigation_position != 'top' }}"
+      "visible_if": "{{ block.settings.layout_type == 'carousel' or block.settings.layout_type_mobile == 'carousel' }}"
     },
     {
       "type": "header",
       "content": "t:general.pagination",
-      "visible_if": "{{ block.settings.layout_type == 'carousel' }}"
+      "visible_if": "{{ block.settings.layout_type == 'carousel' or block.settings.layout_type_mobile == 'carousel' }}"
     },
     {
       "type": "checkbox",
       "id": "show_pagination_on_desktop",
       "label": "t:labels.show_pagination",
       "default": true,
-      "visible_if": "{{ block.settings.layout_type == 'carousel' }}"
+      "visible_if": "{{ block.settings.layout_type == 'carousel' or block.settings.layout_type_mobile == 'carousel' }}"
     },
     {
       "type": "select",
@@ -620,7 +707,7 @@
         }
       ],
       "default": "progress_bar",
-      "visible_if": "{{ block.settings.layout_type == 'carousel' and block.settings.show_pagination_on_desktop }}"
+      "visible_if": "{{ block.settings.layout_type == 'carousel' or block.settings.layout_type_mobile == 'carousel' }}"
     },
     {
       "type": "range",
@@ -631,7 +718,7 @@
       "step": 1,
       "unit": "px",
       "default": 50,
-      "visible_if": "{{ block.settings.layout_type == 'carousel' and block.settings.show_pagination_on_desktop }}"
+      "visible_if": "{{ block.settings.layout_type == 'carousel' or block.settings.layout_type_mobile == 'carousel' }}"
     },
     {
       "type": "range",
@@ -642,14 +729,14 @@
       "step": 1,
       "unit": "px",
       "default": 24,
-      "visible_if": "{{ block.settings.layout_type == 'carousel' and block.settings.show_pagination_on_desktop }}"
+      "visible_if": "{{ block.settings.layout_type == 'carousel' or block.settings.layout_type_mobile == 'carousel' }}"
     },
     {
       "type": "checkbox",
       "id": "pagination_limit_width",
       "label": "t:labels.limit_width",
       "default": true,
-      "visible_if": "{{ block.settings.layout_type == 'carousel' and block.settings.show_pagination_on_desktop and block.settings.pagination_type == 'progress_bar' }}"
+      "visible_if": "{{ block.settings.layout_type == 'carousel' or block.settings.layout_type_mobile == 'carousel' }}"
     },
     {
       "type": "range",
@@ -660,26 +747,26 @@
       "step": 10,
       "unit": "px",
       "default": 260,
-      "visible_if": "{{ block.settings.layout_type == 'carousel' and block.settings.show_pagination_on_desktop and block.settings.pagination_type == 'progress_bar' and block.settings.pagination_limit_width }}"
+      "visible_if": "{{ block.settings.layout_type == 'carousel' or block.settings.layout_type_mobile == 'carousel' }}"
     },
     {
       "type": "header",
       "content": "t:labels.autoplay",
-      "visible_if": "{{ block.settings.layout_type == 'carousel' }}"
+      "visible_if": "{{ block.settings.layout_type == 'carousel' or block.settings.layout_type_mobile == 'carousel' }}"
     },
     {
       "type": "checkbox",
       "id": "autoplay",
       "label": "t:labels.auto_rotate_slides",
       "default": false,
-      "visible_if": "{{ block.settings.layout_type == 'carousel' }}"
+      "visible_if": "{{ block.settings.layout_type == 'carousel' or block.settings.layout_type_mobile == 'carousel' }}"
     },
     {
       "type": "checkbox",
       "id": "autoplay_pause_on_hover",
       "label": "t:labels.pause_on_hover",
       "default": true,
-      "visible_if": "{{ block.settings.layout_type == 'carousel' and block.settings.autoplay }}"
+      "visible_if": "{{ block.settings.layout_type == 'carousel' or block.settings.layout_type_mobile == 'carousel' }}"
     },
     {
       "type": "range",
@@ -690,7 +777,7 @@
       "step": 1,
       "unit": "s",
       "default": 4,
-      "visible_if": "{{ block.settings.layout_type == 'carousel' and block.settings.autoplay }}"
+      "visible_if": "{{ block.settings.layout_type == 'carousel' or block.settings.layout_type_mobile == 'carousel' }}"
     }
   ],
   "presets": [
@@ -719,7 +806,9 @@
         "pagination_max_width": 260,
         "autoplay": false,
         "autoplay_pause_on_hover": true,
-        "autoplay_speed": 4
+        "autoplay_speed": 4,
+        "layout_type_mobile": "carousel",
+        "show_navigation_on_mobile": true
       },
       "blocks": [
         {
