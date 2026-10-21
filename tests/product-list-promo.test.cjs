@@ -5,7 +5,8 @@ const path = require('node:path');
 const { loadLiquid, stripShopifyMetadata } = require('./helpers/liquid-engine.cjs');
 const Liquid = loadLiquid();
 const engine = new Liquid();
-const source = stripShopifyMetadata(fs.readFileSync(path.join(__dirname, '../snippets/product-list-promo-items.liquid'), 'utf8'));
+const source = stripShopifyMetadata(fs.readFileSync(path.join(__dirname, '../snippets/product-list-promo-items.liquid'), 'utf8'))
+  .replace("{% render 'product-list-promo-styles' %}", '');
 const card = (position, text) => `<!--promo-card-slot:${position}--><div data-promo-card>${text}</div><!--/promo-card-slot-->`;
 
 test('inserts promos at product boundaries, preserving block order for ties', async () => {
