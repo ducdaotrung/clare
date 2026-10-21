@@ -455,7 +455,7 @@
           "type": "collection-tab",
           "settings": {
             "label": "BEST SELLERS",
-            "collection": "automated-collection"
+            "collection": "best-sellers"
           },
           "blocks": {
             "product-card": {
@@ -474,7 +474,7 @@
           "type": "collection-tab",
           "settings": {
             "label": "NEW IN",
-            "collection": ""
+            "collection": "new-in"
           },
           "blocks": {
             "product-card": {
@@ -493,7 +493,7 @@
           "type": "collection-tab",
           "settings": {
             "label": "MIDI DRESSES",
-            "collection": ""
+            "collection": "midi-dresses"
           },
           "blocks": {
             "product-card": {
