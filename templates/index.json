@@ -1851,7 +1851,10 @@
           "type": "collection-list-items",
           "static": true,
           "settings": {
-            "collections": [],
+            "collections": [
+              "automated-collection",
+              "frontpage"
+            ],
             "layout": "grid",
             "columns_desktop": "2",
             "columns_mobile": "1",
