@@ -708,7 +708,7 @@
                 "item_14": {
                   "type": "collection-category",
                   "settings": {
-                    "collection": "automated-collection",
+                    "collection": "best-sellers",
                     "image": "shopify://shop_images/clare-cat-1.png",
                     "vertical_alignment": "center",
                     "customize_mobile_alignment": false,
@@ -826,7 +826,7 @@
                 "item_17": {
                   "type": "collection-category",
                   "settings": {
-                    "collection": "",
+                    "collection": "midi-dresses",
                     "image": "shopify://shop_images/clare-cat-2.png",
                     "vertical_alignment": "center",
                     "customize_mobile_alignment": false,
@@ -944,7 +944,7 @@
                 "item_20": {
                   "type": "collection-category",
                   "settings": {
-                    "collection": "",
+                    "collection": "trending-for-you",
                     "image": "shopify://shop_images/clare-cat-3.png",
                     "vertical_alignment": "center",
                     "customize_mobile_alignment": false,
@@ -1062,7 +1062,7 @@
                 "item_23": {
                   "type": "collection-category",
                   "settings": {
-                    "collection": "",
+                    "collection": "trending-now",
                     "image": "shopify://shop_images/clare-cat-4.png",
                     "vertical_alignment": "center",
                     "customize_mobile_alignment": false,
