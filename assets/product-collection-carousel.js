@@ -167,8 +167,10 @@ const initialize = (carousel) => {
   };
   instances.set(carousel, state);
 
-  if (carousel.dataset.swiperMobileOnly === 'true') {
-    state.mobileQuery = window.matchMedia(`(max-width: ${desktopBreakpoint - 0.02}px)`);
+  if (carousel.dataset.swiperMobileOnly === 'true' || carousel.dataset.swiperDesktopOnly === 'true') {
+    state.mobileQuery = window.matchMedia(carousel.dataset.swiperDesktopOnly === 'true'
+      ? `(min-width: ${desktopBreakpoint}px)`
+      : `(max-width: ${desktopBreakpoint - 0.02}px)`);
     state.mobileQueryHandler = () => {
       if (state.mobileQuery.matches) {
         if (!state.swiper) {

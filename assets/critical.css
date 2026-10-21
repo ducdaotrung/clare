@@ -3325,3 +3325,11 @@ body[data-block-animations="false"] .reveal-pending { opacity:1!important; }
 .product-card__variant-dropdown select:focus-visible { outline: 2px solid var(--input-focus-color, currentColor); outline-offset: 2px; }
 .product-card__variant-chevron { position: absolute; right: 0; top: 50%; display: flex; width: 11px; height: 11px; transform: translateY(-50%); pointer-events: none; }
 .product-card__variant-chevron svg { width: 11px; height: 11px; }
+
+@media (max-width: 767.98px) {
+  .product-collection-grid--mobile-grid:not(.swiper-initialized) > .swiper-wrapper {
+    display: grid;
+    grid-template-columns: repeat(var(--product-collection-grid-columns-mobile, 1), minmax(0, 1fr));
+    gap: var(--product-collection-grid-gap-vertical-mobile, 4px) var(--product-collection-grid-gap-horizontal-mobile, 4px);
+  }
+}

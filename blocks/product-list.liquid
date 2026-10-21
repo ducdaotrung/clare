@@ -23,6 +23,24 @@
     assign product_list_layout = 'grid'
   endunless
 
+  assign product_list_mobile_layout = block.settings.layout_type_mobile | default: 'carousel'
+  unless product_list_mobile_layout == 'grid' or product_list_mobile_layout == 'carousel'
+    assign product_list_mobile_layout = 'carousel'
+  endunless
+  assign product_list_mobile_carousel = false
+  assign product_list_has_carousel = false
+  if product_list_mobile_layout == 'carousel'
+    assign product_list_mobile_carousel = true
+    assign product_list_has_carousel = true
+  endif
+  if product_list_layout == 'carousel'
+    assign product_list_has_carousel = true
+  endif
+  assign product_list_item_layout = 'grid'
+  if product_list_has_carousel
+    assign product_list_item_layout = 'carousel'
+  endif
+
   assign product_list_max_products = block.settings.max_products | default: 6 | plus: 0
   if product_list_max_products < 1 or product_list_max_products > 24
     assign product_list_max_products = 6
@@ -180,13 +198,13 @@
           assign product_list_card_placeholder = true
         endif
       %}
-      {% render 'product-list-promo-items', cards: product_list_promo_cards, position: forloop.index, last_position: product_list_last_position, layout: product_list_layout %}
-      <div class="{% if product_list_layout == 'carousel' %}swiper-slide {% endif %}product-collection-grid__item product-card-layout__item product-list__item">
+      {% render 'product-list-promo-items', cards: product_list_promo_cards, position: forloop.index, last_position: product_list_last_position, layout: product_list_item_layout %}
+      <div class="{% if product_list_has_carousel %}swiper-slide {% endif %}product-collection-grid__item product-card-layout__item product-list__item">
         {% content_for 'block', type: 'product-card', id: 'product-card', product: product_list_card_product, closest.product: product_list_card_product, placeholder: product_list_card_placeholder %}
       </div>
     {% endfor %}
   {% endif %}
-  {% render 'product-list-promo-items', cards: product_list_promo_cards, position: product_list_last_position, last_position: product_list_last_position, layout: product_list_layout %}
+  {% render 'product-list-promo-items', cards: product_list_promo_cards, position: product_list_last_position, last_position: product_list_last_position, layout: product_list_item_layout %}
 {% endcapture %}
 
 {% capture product_list_pagination_style %}
@@ -243,6 +261,7 @@
   data-product-list
   {% if product_list_recommendations %}data-recommendation-intent="{{ block.settings.recommendation_type | default: 'related' }}" data-recommendation-limit="{{ product_list_max_products | at_most: 10 }}" data-recommendation-placeholder="{{ product_list_is_placeholder }}"{% endif %}
   data-layout="{{ product_list_layout }}"
+  data-mobile-layout="{{ product_list_mobile_layout }}"
   data-collection-url="{{ product_list_collection.url | escape }}"
   {{ block.shopify_attributes }}
 >
@@ -254,6 +273,8 @@
       products: product_list_real_items,
       max_products: product_list_max_products,
       layout_type: product_list_layout,
+      layout_type_mobile: product_list_mobile_layout,
+      mobile_carousel: product_list_mobile_carousel,
       columns_desktop: block.settings.columns_desktop,
       columns_mobile: block.settings.columns_mobile,
       gap_horizontal: product_list_gap_desktop,
@@ -345,6 +366,9 @@
     }
   }
 
+  @media (max-width: 767.98px) {
+    .product-list[data-mobile-layout='grid'] .product-list__pagination { display: none; }
+  }
 {% endstylesheet %}
 
 {% schema %}
@@ -419,6 +443,16 @@
           "value": "carousel",
           "label": "t:options.product_list_layout.carousel"
         }
+      ],
+      "default": "carousel"
+    },
+    {
+      "type": "select",
+      "id": "layout_type_mobile",
+      "label": "Mobile type",
+      "options": [
+        { "value": "grid", "label": "t:options.product_list_layout.grid" },
+        { "value": "carousel", "label": "t:options.product_list_layout.carousel" }
       ],
       "default": "carousel"
     },
