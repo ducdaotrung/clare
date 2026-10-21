@@ -2599,8 +2599,8 @@
             "alignment": "left",
             "customize_mobile_alignment": false,
             "alignment_mobile": "left",
-            "gap_desktop": 12,
-            "gap_mobile": 8,
+            "gap_desktop": 16,
+            "gap_mobile": 12,
             "padding_top": 0,
             "padding_bottom": 0,
             "padding_left": 0,
@@ -2615,7 +2615,7 @@
             "heading_3HTtgT": {
               "type": "heading",
               "settings": {
-                "text": "<p>Main Heading</p>",
+                "text": "<p>FROM THE JOURNAL</p>",
                 "heading_size": "display",
                 "custom_heading_size": 24,
                 "html_tag": "h2",
@@ -2640,7 +2640,7 @@
             "text_pmd7X8": {
               "type": "text",
               "settings": {
-                "text": "<p>This is placeholder text for a paragraph that provides a short and engaging description</p>",
+                "text": "<p>Stay inspired with the latest stories, trends, and expert advice.</p>",
                 "text_size": "display",
                 "custom_font_size": 16,
                 "height_limit": "none",
@@ -2654,9 +2654,9 @@
                 "padding_bottom": 0,
                 "padding_left": 0,
                 "padding_right": 0,
-                "customize_mobile_padding": false,
+                "customize_mobile_padding": true,
                 "padding_top_mobile": 0,
-                "padding_bottom_mobile": 0,
+                "padding_bottom_mobile": 4,
                 "padding_left_mobile": 0,
                 "padding_right_mobile": 0
               },
