@@ -69,10 +69,12 @@
       data-desktop-alignment="{{ collection_list_desktop_alignment }}"
       data-mobile-alignment="{{ collection_list_mobile_alignment }}"
     >
-      {% capture collection_list_header_content %}{% content_for 'block', type: 'header', id: 'header' %}{% endcapture %}
-      {% render 'section-content-slot', content: collection_list_header_content, class: 'collection-list__header section-list-layout__header' %}
-      {% capture collection_list_actions_content %}{% content_for 'block', type: 'view-all-button', id: 'view-all' %}{% endcapture %}
-      {% render 'section-content-slot', content: collection_list_actions_content, class: 'collection-list__actions section-list-layout__actions' %}
+      {% unless section.settings.banner_cards %}
+        {% capture collection_list_header_content %}{% content_for 'block', type: 'header', id: 'header' %}{% endcapture %}
+        {% render 'section-content-slot', content: collection_list_header_content, class: 'collection-list__header section-list-layout__header' %}
+        {% capture collection_list_actions_content %}{% content_for 'block', type: 'view-all-button', id: 'view-all' %}{% endcapture %}
+        {% render 'section-content-slot', content: collection_list_actions_content, class: 'collection-list__actions section-list-layout__actions' %}
+      {% endunless %}
       {% capture collection_list_content_content %}{% content_for 'block', type: 'collection-list-items', id: 'collection-list' %}{% endcapture %}
       {% render 'section-content-slot', content: collection_list_content_content, class: 'collection-list__content section-list-layout__body' %}
     </div>
