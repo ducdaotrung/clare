@@ -2688,6 +2688,7 @@
               "type": "gallery-image",
               "name": "Gallery image",
               "settings": {
+                "image": "shopify://shop_images/clare-social-5.png",
                 "alt_text": "",
                 "tag": "@pam_sam",
                 "tag_font_size": "custom",
@@ -2698,8 +2699,104 @@
                 "social_network": "instagram",
                 "social_url": "",
                 "social_background": "rgba(0,0,0,0)",
-                "social_color": "#FFFFFF",
-                "show_overlay": "always",
+                "social_color": "#ffffff",
+                "show_overlay": "hover",
+                "enable_overlay": true,
+                "overlay_style": "solid",
+                "overlay_background": "#00000033",
+                "overlay_gradient": "linear-gradient(180deg, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.52))"
+              },
+              "blocks": {}
+            },
+            "gallery_image_LNjCdf": {
+              "type": "gallery-image",
+              "name": "Gallery image",
+              "settings": {
+                "image": "shopify://shop_images/clare-social-4.png",
+                "alt_text": "",
+                "tag": "@pam_sam",
+                "tag_font_size": "custom",
+                "tag_font_size_custom": 16,
+                "customize_mobile_tag_font_size": false,
+                "tag_font_size_mobile": "md",
+                "tag_font_size_custom_mobile": 14,
+                "social_network": "instagram",
+                "social_url": "",
+                "social_background": "rgba(0,0,0,0)",
+                "social_color": "#ffffff",
+                "show_overlay": "hover",
+                "enable_overlay": true,
+                "overlay_style": "solid",
+                "overlay_background": "#00000033",
+                "overlay_gradient": "linear-gradient(180deg, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.52))"
+              },
+              "blocks": {}
+            },
+            "gallery_image_UGnRdV": {
+              "type": "gallery-image",
+              "name": "Gallery image",
+              "settings": {
+                "image": "shopify://shop_images/clare-social-3.png",
+                "alt_text": "",
+                "tag": "@pam_sam",
+                "tag_font_size": "custom",
+                "tag_font_size_custom": 16,
+                "customize_mobile_tag_font_size": false,
+                "tag_font_size_mobile": "md",
+                "tag_font_size_custom_mobile": 14,
+                "social_network": "instagram",
+                "social_url": "",
+                "social_background": "rgba(0,0,0,0)",
+                "social_color": "#ffffff",
+                "show_overlay": "hover",
+                "enable_overlay": true,
+                "overlay_style": "solid",
+                "overlay_background": "#00000033",
+                "overlay_gradient": "linear-gradient(180deg, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.52))"
+              },
+              "blocks": {}
+            },
+            "gallery_image_n7ptG8": {
+              "type": "gallery-image",
+              "name": "Gallery image",
+              "settings": {
+                "image": "shopify://shop_images/clare-social-2.png",
+                "alt_text": "",
+                "tag": "@pam_sam",
+                "tag_font_size": "custom",
+                "tag_font_size_custom": 16,
+                "customize_mobile_tag_font_size": false,
+                "tag_font_size_mobile": "md",
+                "tag_font_size_custom_mobile": 14,
+                "social_network": "instagram",
+                "social_url": "",
+                "social_background": "rgba(0,0,0,0)",
+                "social_color": "#ffffff",
+                "show_overlay": "hover",
+                "enable_overlay": true,
+                "overlay_style": "solid",
+                "overlay_background": "#00000033",
+                "overlay_gradient": "linear-gradient(180deg, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.52))"
+              },
+              "blocks": {}
+            },
+            "gallery_image_Bb9kgc": {
+              "type": "gallery-image",
+              "name": "Gallery image",
+              "settings": {
+                "image": "shopify://shop_images/clare-social-1.png",
+                "alt_text": "",
+                "tag": "@pam_sam",
+                "tag_font_size": "custom",
+                "tag_font_size_custom": 16,
+                "customize_mobile_tag_font_size": false,
+                "tag_font_size_mobile": "md",
+                "tag_font_size_custom_mobile": 14,
+                "social_network": "instagram",
+                "social_url": "",
+                "social_background": "rgba(0,0,0,0)",
+                "social_color": "#ffffff",
+                "show_overlay": "hover",
                 "enable_overlay": true,
                 "overlay_style": "solid",
                 "overlay_background": "#00000033",
@@ -2709,7 +2806,11 @@
             }
           },
           "block_order": [
-            "gallery_image_bFHT69"
+            "gallery_image_bFHT69",
+            "gallery_image_LNjCdf",
+            "gallery_image_UGnRdV",
+            "gallery_image_n7ptG8",
+            "gallery_image_Bb9kgc"
           ]
         }
       },
