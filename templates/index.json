@@ -1762,27 +1762,6 @@
             "heading_y4F4Vd"
           ]
         },
-        "featured-collection-view-all": {
-          "type": "view-all-button",
-          "static": true,
-          "settings": {
-            "button_label": "View all",
-            "button_link": "",
-            "button_open_in_new_tab": false,
-            "button_style": "text",
-            "show_icon": false,
-            "icon": "arrow_right",
-            "icon_position": "after",
-            "icon_size": "inherit",
-            "icon_width": 20,
-            "hide_view_all_mobile": false,
-            "button_style_mobile": "outline",
-            "button_height_mobile": "inherit",
-            "full_width_mobile": true,
-            "show_icon_mobile": false
-          },
-          "blocks": {}
-        },
         "product-list": {
           "type": "product-list",
           "static": true,
@@ -1793,9 +1772,11 @@
             "collection": "",
             "max_products": 8,
             "layout_type": "grid",
+            "layout_type_mobile": "carousel",
             "columns_desktop": "4",
             "columns_mobile": "1",
             "show_next_slide_preview_on_desktop": false,
+            "show_next_slide_preview_on_mobile": false,
             "product_gap_desktop": 28,
             "product_gap_mobile": 12,
             "show_navigation_on_desktop": true,
@@ -1825,6 +1806,27 @@
             }
           },
           "block_order": []
+        },
+        "featured-collection-view-all": {
+          "type": "view-all-button",
+          "static": true,
+          "settings": {
+            "button_label": "VIEW ALL",
+            "button_link": "",
+            "button_open_in_new_tab": false,
+            "button_style": "text",
+            "show_icon": false,
+            "icon": "arrow_right",
+            "icon_position": "after",
+            "icon_size": "inherit",
+            "icon_width": 20,
+            "hide_view_all_mobile": false,
+            "button_style_mobile": "text",
+            "button_height_mobile": "inherit",
+            "full_width_mobile": true,
+            "show_icon_mobile": false
+          },
+          "blocks": {}
         }
       },
       "name": "t:general.featured_collection",
