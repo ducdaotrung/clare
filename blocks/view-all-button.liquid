@@ -63,7 +63,7 @@
 
 {% if collection_list_view_all_can_render %}
   <div
-    class="collection-list-view-all{% if block.settings.hide_view_all_mobile %} collection-list-view-all--hide-mobile{% endif %}{% if block.settings.full_width_mobile %} collection-list-view-all--full-width-mobile{% endif %}"
+    class="collection-list-view-all{% if block.settings.hide_view_all_mobile and collection_list_view_all_is_featured == false %} collection-list-view-all--hide-mobile{% endif %}{% if block.settings.full_width_mobile %} collection-list-view-all--full-width-mobile{% endif %}"
     {% if collection_list_view_all_style_attribute != blank %}style="{{ collection_list_view_all_style_attribute }}"{% endif %}
     {{ block.shopify_attributes }}
   >
