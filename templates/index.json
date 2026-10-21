@@ -1639,6 +1639,7 @@
               "name": "t:general.countdown_timer",
               "settings": {
                 "style": "with_labels",
+                "digit_tiles": true,
                 "show_background": true,
                 "corner_radius": "square",
                 "type": "recurring",
@@ -1663,8 +1664,7 @@
                 "padding_top_mobile": 0,
                 "padding_bottom_mobile": 0,
                 "padding_left_mobile": 0,
-                "padding_right_mobile": 0,
-                "digit_tiles": true
+                "padding_right_mobile": 0
               },
               "blocks": {}
             }
@@ -1677,6 +1677,9 @@
       },
       "block_order": [
         "group_yan7qi"
+      ],
+      "custom_css": [
+        "@media (max-width: 767.98px) {.group:has(> .block-header + [data-countdown-timer]) {display: grid; grid-template-columns: minmax(0, 1fr); gap: 8px; justify-items: center; } .group > .block-header {display: contents; } .group > [data-countdown-timer] {order: 1; } .block-header > .button-block {order: 2; margin-top: 24px; }}"
       ],
       "name": "Deal",
       "settings": {
@@ -1696,10 +1699,7 @@
         "customize_mobile_padding": true,
         "padding_top_mobile": 90,
         "padding_bottom_mobile": 90
-      },
-      "custom_css": [
-        "@media (max-width: 767.98px) {.group:has(> .block-header + [data-countdown-timer]) {display: grid; grid-template-columns: minmax(0, 1fr); gap: 8px; justify-items: center;} .group > .block-header {display: contents;} .group > [data-countdown-timer] {order: 1;} .block-header > .button-block {order: 2; margin-top: 24px;}}"
-      ]
+      }
     },
     "featured_collection_qVbVaf": {
       "type": "featured-collection",
@@ -1791,23 +1791,26 @@
             "collection": "trending-for-you",
             "max_products": 8,
             "layout_type": "grid",
+            "layout_type_mobile": "carousel",
             "columns_desktop": "4",
             "columns_mobile": "1",
             "show_next_slide_preview_on_desktop": false,
+            "show_next_slide_preview_on_mobile": true,
             "product_gap_desktop": 28,
             "product_gap_mobile": 12,
             "show_navigation_on_desktop": true,
+            "show_navigation_on_mobile": false,
             "navigation_position": "top",
             "navigation_style": "secondary",
             "navigation_icon": "chevron",
             "navigation_behavior": "show_on_hover",
-            "show_pagination_on_desktop": true,
+            "show_pagination_on_desktop": false,
             "pagination_type": "progress_bar",
             "pagination_top_padding_desktop": 50,
             "pagination_top_padding_mobile": 24,
             "pagination_limit_width": true,
             "pagination_max_width": 260,
-            "autoplay": false,
+            "autoplay": true,
             "autoplay_pause_on_hover": true,
             "autoplay_speed": 4
           },
