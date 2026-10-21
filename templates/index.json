@@ -1903,6 +1903,31 @@
                 "padding_right_mobile": 0
               },
               "blocks": {
+                "banner_button": {
+                  "type": "collection-card-button",
+                  "settings": {
+                    "button_label": "SHOP NOW",
+                    "button_open_in_new_tab": false,
+                    "button_style": "primary",
+                    "show_icon": false,
+                    "icon": "arrow_right",
+                    "icon_position": "after",
+                    "icon_size": "inherit",
+                    "icon_width": 20,
+                    "width": "fit",
+                    "width_mobile": "fit",
+                    "padding_top": 0,
+                    "padding_bottom": 0,
+                    "padding_left": 0,
+                    "padding_right": 0,
+                    "customize_mobile_padding": false,
+                    "padding_top_mobile": 0,
+                    "padding_bottom_mobile": 0,
+                    "padding_left_mobile": 0,
+                    "padding_right_mobile": 0
+                  },
+                  "blocks": {}
+                },
                 "title": {
                   "type": "collection-card-title",
                   "static": true,
@@ -1924,16 +1949,6 @@
                     "padding_right_mobile": 0
                   },
                   "blocks": {}
-                },
-                "banner_button": {
-                  "type": "collection-card-button",
-                  "settings": {
-                    "button_label": "SHOP NOW",
-                    "button_style": "primary",
-                    "width": "fit",
-                    "width_mobile": "fit"
-                  },
-                  "blocks": {}
                 }
               },
               "block_order": [
@@ -1946,6 +1961,7 @@
       },
       "name": "Collection list (custom)",
       "settings": {
+        "banner_cards": true,
         "section_width": "full_width",
         "desktop_alignment": "left",
         "mobile_alignment": "left",
@@ -1953,12 +1969,11 @@
         "gap_mobile": 30,
         "background_media": "none",
         "color_scheme": "",
-        "padding_top": 50,
-        "padding_bottom": 50,
+        "padding_top": 0,
+        "padding_bottom": 64,
         "customize_mobile_padding": false,
         "padding_top_mobile": 50,
-        "padding_bottom_mobile": 50,
-        "banner_cards": true
+        "padding_bottom_mobile": 50
       }
     }
   },
