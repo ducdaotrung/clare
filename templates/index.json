@@ -2746,7 +2746,7 @@
                 "blog_card_tag_E7fEb6": {
                   "type": "blog-card-tag",
                   "settings": {
-                    "max_tag": 3,
+                    "max_tag": 1,
                     "style": "text",
                     "text_case": "uppercase",
                     "font": "accent",
@@ -2776,35 +2776,22 @@
                   },
                   "blocks": {}
                 },
-                "blog_card_description_cPmacT": {
-                  "type": "blog-card-description",
-                  "settings": {
-                    "text_limit": "two",
-                    "size": "sm",
-                    "padding_top": 0,
-                    "padding_bottom": 0,
-                    "customize_mobile_padding": false,
-                    "padding_top_mobile": 0,
-                    "padding_bottom_mobile": 6
-                  },
-                  "blocks": {}
-                },
                 "blog_card_meta_979LmV": {
                   "type": "blog-card-meta",
                   "settings": {
                     "show_date": true,
-                    "show_author": true,
+                    "show_author": false,
                     "show_comment_count": false,
                     "details_order": "date_author_comment",
                     "author_display_type": "text",
                     "author_prefix": "by",
                     "author_icon": "user",
-                    "show_date_icon": true,
+                    "show_date_icon": false,
                     "date_icon": "calendar",
                     "date_format": "long",
                     "show_comment_icon": true,
                     "comment_icon": "comment",
-                    "separator_icon": "vertical-rule",
+                    "separator_icon": "none",
                     "size": "xs",
                     "text_color": "",
                     "layout": "horizontal",
@@ -2816,6 +2803,19 @@
                     "customize_mobile_padding": false,
                     "padding_top_mobile": 0,
                     "padding_bottom_mobile": 4
+                  },
+                  "blocks": {}
+                },
+                "blog_card_description_cPmacT": {
+                  "type": "blog-card-description",
+                  "settings": {
+                    "text_limit": "two",
+                    "size": "sm",
+                    "padding_top": 0,
+                    "padding_bottom": 0,
+                    "customize_mobile_padding": false,
+                    "padding_top_mobile": 0,
+                    "padding_bottom_mobile": 6
                   },
                   "blocks": {}
                 },
@@ -2840,8 +2840,8 @@
               "block_order": [
                 "blog_card_tag_E7fEb6",
                 "blog_card_title_W8VCWE",
-                "blog_card_description_cPmacT",
                 "blog_card_meta_979LmV",
+                "blog_card_description_cPmacT",
                 "blog_card_button_HpzGGf"
               ]
             }
