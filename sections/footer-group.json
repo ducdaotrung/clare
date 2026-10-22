@@ -231,7 +231,7 @@
                 "footer-customer-menu": {
                   "type": "menu",
                   "settings": {
-                    "menu": "",
+                    "menu": "customer-info",
                     "heading": "CUSTOMER INFO",
                     "collapse_menu_on_mobile": true,
                     "icon": "plus",
@@ -275,7 +275,7 @@
                 "footer-information-menu": {
                   "type": "menu",
                   "settings": {
-                    "menu": "",
+                    "menu": "information",
                     "heading": "INFORMATION",
                     "collapse_menu_on_mobile": true,
                     "icon": "plus",
@@ -319,7 +319,7 @@
                 "footer-about-menu": {
                   "type": "menu",
                   "settings": {
-                    "menu": "",
+                    "menu": "about",
                     "heading": "ABOUT",
                     "collapse_menu_on_mobile": true,
                     "icon": "plus",
