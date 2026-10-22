@@ -327,7 +327,7 @@
                     "menu_gap": 16,
                     "heading_size": "display",
                     "custom_heading_size": 14,
-                    "html_tag": "h4",
+                    "html_tag": "h5",
                     "heading_color": "",
                     "menu_size": "sm",
                     "menu_color": ""
