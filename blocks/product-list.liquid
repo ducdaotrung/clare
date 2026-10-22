@@ -164,15 +164,17 @@
     assign product_list_pagination_max_width = 260
   endif
 
+  assign product_list_show_pagination_desktop = false
+  if product_list_layout == 'carousel' and block.settings.show_pagination_on_desktop != false and block.settings.show_pagination_on_desktop != 'false'
+    assign product_list_show_pagination_desktop = true
+  endif
+  assign product_list_show_pagination_mobile = false
+  if product_list_mobile_layout == 'carousel' and block.settings.show_pagination_on_mobile != false and block.settings.show_pagination_on_mobile != 'false'
+    assign product_list_show_pagination_mobile = true
+  endif
   assign product_list_show_pagination = false
-  if product_list_layout == 'carousel' or product_list_mobile_layout == 'carousel'
+  if product_list_show_pagination_desktop or product_list_show_pagination_mobile
     assign product_list_show_pagination = true
-    if product_list_layout == 'carousel' and block.settings.show_pagination_on_desktop == false or product_list_layout == 'carousel' and block.settings.show_pagination_on_desktop == 'false'
-      assign product_list_show_pagination = false
-    endif
-    if product_list_mobile_layout == 'carousel' and block.settings.show_pagination_on_mobile == false or product_list_mobile_layout == 'carousel' and block.settings.show_pagination_on_mobile == 'false'
-      assign product_list_show_pagination = false
-    endif
   endif
 
   assign product_list_autoplay_enabled = false
@@ -281,6 +283,8 @@
   {% if product_list_recommendations %}data-recommendation-intent="{{ block.settings.recommendation_type | default: 'related' }}" data-recommendation-limit="{{ product_list_max_products | at_most: 10 }}" data-recommendation-placeholder="{{ product_list_is_placeholder }}"{% endif %}
   data-layout="{{ product_list_layout }}"
   data-mobile-layout="{{ product_list_mobile_layout }}"
+  data-pagination-desktop="{{ product_list_show_pagination_desktop }}"
+  data-pagination-mobile="{{ product_list_show_pagination_mobile }}"
   data-collection-url="{{ product_list_collection.url | escape }}"
   {{ block.shopify_attributes }}
 >
@@ -390,11 +394,13 @@
 
   @media (max-width: 767.98px) {
     .product-list[data-mobile-layout='grid'] .product-list__pagination { display: none; }
+    .product-list[data-mobile-layout='carousel'][data-pagination-mobile='false'] .product-list__pagination { display: none; }
   }
 
   @media (min-width: 768px) {
     .product-list[data-layout='grid'] .product-list__navigation,
     .product-list--navigation-desktop-hidden .product-list__navigation { display: none; }
+    .product-list[data-layout='carousel'][data-pagination-desktop='false'] .product-list__pagination { display: none; }
   }
   @media (max-width: 767.98px) {
     .product-list .product-collection-grid--mobile-grid:not(.swiper-initialized) > .swiper-wrapper {
@@ -776,7 +782,7 @@
       "id": "autoplay_pause_on_hover",
       "label": "t:labels.pause_on_hover",
       "default": true,
-      "visible_if": "{{ block.settings.layout_type == 'carousel' or block.settings.layout_type_mobile == 'carousel' }}"
+      "visible_if": "{{ block.settings.autoplay and block.settings.layout_type == 'carousel' or block.settings.autoplay and block.settings.layout_type_mobile == 'carousel' }}"
     },
     {
       "type": "range",
@@ -787,7 +793,7 @@
       "step": 1,
       "unit": "s",
       "default": 4,
-      "visible_if": "{{ block.settings.layout_type == 'carousel' and block.settings.autoplay }}"
+      "visible_if": "{{ block.settings.layout_type == 'carousel' and block.settings.autoplay or block.settings.layout_type_mobile == 'carousel' and block.settings.autoplay }}"
     }
   ],
   "presets": [

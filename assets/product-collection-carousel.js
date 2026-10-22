@@ -64,6 +64,7 @@ const buildOptions = (carousel, scope) => {
     carousel.querySelector('[data-swiper-pagination]');
   const paginationType = getPaginationType(pagination?.dataset.paginationType || carousel.dataset.swiperPaginationType);
   const options = {
+    ...(carousel.closest('[data-product-list]') ? { breakpointsBase: 'container' } : {}),
     slidesPerView: getMobileSlidesPerView(carousel),
     spaceBetween: toNumber(carousel.dataset.swiperGapMobile, 0),
     breakpoints: {
@@ -154,6 +155,7 @@ const initialize = (carousel) => {
   if (!carousel || instances.has(carousel)) return;
 
   const scope = getCarouselScope(carousel);
+  const isProductList = Boolean(carousel.closest('[data-product-list]'));
   const state = {
     carousel,
     scope,
@@ -164,6 +166,7 @@ const initialize = (carousel) => {
     mediaResizeObserver: null,
     mobileQuery: null,
     mobileQueryHandler: null,
+    containerResizeObserver: null,
   };
   instances.set(carousel, state);
 
@@ -172,7 +175,10 @@ const initialize = (carousel) => {
       ? `(min-width: ${desktopBreakpoint}px)`
       : `(max-width: ${desktopBreakpoint - 0.02}px)`);
     state.mobileQueryHandler = () => {
-      if (state.mobileQuery.matches) {
+      const useMobileLayout = isProductList && state.containerResizeObserver
+        ? carousel.clientWidth < desktopBreakpoint
+        : state.mobileQuery.matches;
+      if (useMobileLayout) {
         if (!state.swiper) {
           state.swiper = createSwiperCarousel(carousel, buildOptions(carousel, scope));
           if (state.swiper) {
@@ -189,7 +195,12 @@ const initialize = (carousel) => {
         state.swiper = null;
       }
     };
-    state.mobileQuery.addEventListener('change', state.mobileQueryHandler);
+    if (isProductList && typeof ResizeObserver !== 'undefined') {
+      state.containerResizeObserver = new ResizeObserver(state.mobileQueryHandler);
+      state.containerResizeObserver.observe(carousel);
+    } else {
+      state.mobileQuery.addEventListener('change', state.mobileQueryHandler);
+    }
     state.mobileQueryHandler();
     return;
   }
@@ -221,6 +232,7 @@ const destroy = (carousel) => {
   state.resizeCleanup?.();
   state.visibilityObserver?.disconnect();
   state.mediaResizeObserver?.disconnect();
+  state.containerResizeObserver?.disconnect();
   state.mobileQuery?.removeEventListener('change', state.mobileQueryHandler);
   if (state.swiper) destroySwiperCarousel(state.swiper);
   instances.delete(carousel);
