@@ -74,7 +74,7 @@
   endunless
 
   assign product_collection_grid_show_pagination = false
-  if product_collection_grid_layout == 'carousel'
+  if product_collection_grid_layout == 'carousel' or product_collection_grid_mobile_carousel
     if show_pagination == true or show_pagination == 'true'
       assign product_collection_grid_show_pagination = true
     endif
