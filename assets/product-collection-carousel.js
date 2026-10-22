@@ -175,8 +175,9 @@ const initialize = (carousel) => {
       ? `(min-width: ${desktopBreakpoint}px)`
       : `(max-width: ${desktopBreakpoint - 0.02}px)`);
     state.mobileQueryHandler = () => {
+      const containerWidth = carousel.clientWidth;
       const useMobileLayout = isProductList && state.containerResizeObserver
-        ? carousel.clientWidth < desktopBreakpoint
+        ? containerWidth > 0 && containerWidth < desktopBreakpoint
         : state.mobileQuery.matches;
       if (useMobileLayout) {
         if (!state.swiper) {
