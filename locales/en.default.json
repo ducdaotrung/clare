@@ -9,7 +9,8 @@
  */
 {
   "general": {
-    "testimonial_split": "Customer testimonials"
+    "testimonial_split": "Customer testimonials",
+    "gallery": "Gallery"
   },
   "404": {
     "title": "404",
