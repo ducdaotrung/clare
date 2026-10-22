@@ -105,7 +105,7 @@
   {% if gallery_layout == 'carousel' %}
     <div class="gallery-grid__carousel-container swiper-carousel__container">
       {% if gallery_navigation_position == 'top' %}{{ gallery_navigation }}{% endif %}
-      {% render 'swiper-carousel', id: gallery_carousel_id, content: gallery_slides, root_class: 'gallery-grid__carousel', aria_label: gallery_aria_label, pagination: gallery_pagination, show_next_slide_preview: false, show_next_slide_preview_on_mobile: true, autoplay: gallery_autoplay, pause_on_hover: gallery_autoplay_pause_on_hover, autoplay_delay: gallery_autoplay_delay %}
+  {% render 'swiper-carousel', id: gallery_carousel_id, content: gallery_slides, root_class: 'gallery-grid__carousel', aria_label: gallery_aria_label, pagination: gallery_pagination, show_next_slide_preview: false, show_next_slide_preview_on_mobile: block.settings.show_next_slide_preview_on_mobile, autoplay: gallery_autoplay, pause_on_hover: gallery_autoplay_pause_on_hover, autoplay_delay: gallery_autoplay_delay %}
       {% if gallery_navigation_position != 'top' %}{{ gallery_navigation }}{% endif %}
     </div>
   {% else %}
@@ -144,6 +144,7 @@
     { "type": "header", "content": "Gap" },
     { "type": "range", "id": "gap", "label": "Desktop", "min": 0, "max": 100, "step": 1, "unit": "px", "default": 40 },
     { "type": "range", "id": "gap_mobile", "label": "Mobile", "min": 0, "max": 100, "step": 1, "unit": "px", "default": 24 },
+    { "type": "checkbox", "id": "show_next_slide_preview_on_mobile", "label": "Show next slide preview on mobile", "default": true, "visible_if": "{{ block.settings.layout == 'carousel' }}" },
     { "type": "header", "content": "t:general.navigation", "visible_if": "{{ block.settings.layout == 'carousel' }}" },
     { "type": "checkbox", "id": "show_navigation_on_desktop", "label": "t:labels.show_navigation_on_desktop", "default": true, "visible_if": "{{ block.settings.layout == 'carousel' }}" },
     { "type": "checkbox", "id": "show_navigation_on_mobile", "label": "Show next/previous buttons on mobile", "default": true, "visible_if": "{{ block.settings.layout == 'carousel' }}" },

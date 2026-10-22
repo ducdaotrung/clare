@@ -165,9 +165,12 @@
   endif
 
   assign product_list_show_pagination = false
-  if product_list_layout == 'carousel'
+  if product_list_layout == 'carousel' or product_list_mobile_layout == 'carousel'
     assign product_list_show_pagination = true
-    if block.settings.show_pagination_on_desktop == false or block.settings.show_pagination_on_desktop == 'false'
+    if product_list_layout == 'carousel' and block.settings.show_pagination_on_desktop == false or product_list_layout == 'carousel' and block.settings.show_pagination_on_desktop == 'false'
+      assign product_list_show_pagination = false
+    endif
+    if product_list_mobile_layout == 'carousel' and block.settings.show_pagination_on_mobile == false or product_list_mobile_layout == 'carousel' and block.settings.show_pagination_on_mobile == 'false'
       assign product_list_show_pagination = false
     endif
   endif
@@ -693,6 +696,13 @@
       "visible_if": "{{ block.settings.layout_type == 'carousel' }}"
     },
     {
+      "type": "checkbox",
+      "id": "show_pagination_on_mobile",
+      "label": "Show pagination on mobile",
+      "default": true,
+      "visible_if": "{{ block.settings.layout_type_mobile == 'carousel' }}"
+    },
+    {
       "type": "select",
       "id": "pagination_type",
       "label": "t:labels.type",
@@ -759,14 +769,14 @@
       "id": "autoplay",
       "label": "t:labels.auto_rotate_slides",
       "default": false,
-      "visible_if": "{{ block.settings.layout_type == 'carousel' }}"
+      "visible_if": "{{ block.settings.layout_type == 'carousel' or block.settings.layout_type_mobile == 'carousel' }}"
     },
     {
       "type": "checkbox",
       "id": "autoplay_pause_on_hover",
       "label": "t:labels.pause_on_hover",
       "default": true,
-      "visible_if": "{{ block.settings.layout_type == 'carousel' and block.settings.autoplay }}"
+      "visible_if": "{{ block.settings.layout_type == 'carousel' or block.settings.layout_type_mobile == 'carousel' }}"
     },
     {
       "type": "range",
