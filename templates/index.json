@@ -2156,10 +2156,10 @@
         "color_scheme": "",
         "background_color": "",
         "padding_top": 0,
-        "padding_bottom": 64,
-        "customize_mobile_padding": true,
+        "padding_bottom": 0,
+        "customize_mobile_padding": false,
         "padding_top_mobile": 0,
-        "padding_bottom_mobile": 64
+        "padding_bottom_mobile": 0
       }
     },
     "text_marquee_custom_F4MPGQ": {
@@ -3052,11 +3052,11 @@
         "gap_desktop": 48,
         "gap_mobile": 36,
         "color_scheme": "scheme-1",
-        "padding_top": 40,
-        "padding_bottom": 80,
-        "customize_mobile_padding": true,
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "customize_mobile_padding": false,
         "padding_top_mobile": 0,
-        "padding_bottom_mobile": 56
+        "padding_bottom_mobile": 0
       }
     },
     "gallery_image_grid_yDLyGk": {
