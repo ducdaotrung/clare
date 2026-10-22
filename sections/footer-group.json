@@ -108,7 +108,7 @@
                   "type": "email-signup",
                   "settings": {
                     "form_layout": "horizontal",
-                    "vertical_on_mobile": false,
+                    "vertical_on_mobile": true,
                     "enable_subscription_preferences": false,
                     "subscription_preferences_title": "<p>What styles are you interested in?</p>",
                     "subscription_preferences_option_1": "Option 1",
