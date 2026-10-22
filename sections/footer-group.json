@@ -103,7 +103,7 @@
                     "max_width_mobile": 480,
                     "field_height": "small",
                     "input_placeholder": "Enter your email",
-                    "button_label": "Subscribe",
+                    "button_label": "SUBSCRIBE",
                     "button_style": "primary",
                     "show_icon": false,
                     "icon": "arrow_right",
@@ -119,7 +119,8 @@
                     "padding_bottom_mobile": 0,
                     "padding_left_mobile": 0,
                     "padding_right_mobile": 0,
-                    "color_scheme": "scheme-2"
+                    "color_scheme": "scheme-2",
+                    "background_color": "#ffffff"
                   },
                   "blocks": {}
                 },
