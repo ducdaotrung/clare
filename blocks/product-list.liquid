@@ -717,7 +717,7 @@
         }
       ],
       "default": "progress_bar",
-      "visible_if": "{{ block.settings.layout_type == 'carousel' and block.settings.show_pagination_on_desktop }}"
+      "visible_if": "{{ block.settings.layout_type == 'carousel' and block.settings.show_pagination_on_desktop or block.settings.layout_type_mobile == 'carousel' and block.settings.show_pagination_on_mobile }}"
     },
     {
       "type": "range",
@@ -728,7 +728,7 @@
       "step": 1,
       "unit": "px",
       "default": 50,
-      "visible_if": "{{ block.settings.layout_type == 'carousel' and block.settings.show_pagination_on_desktop }}"
+      "visible_if": "{{ block.settings.layout_type == 'carousel' and block.settings.show_pagination_on_desktop or block.settings.layout_type_mobile == 'carousel' and block.settings.show_pagination_on_mobile }}"
     },
     {
       "type": "range",
@@ -739,7 +739,7 @@
       "step": 1,
       "unit": "px",
       "default": 24,
-      "visible_if": "{{ block.settings.layout_type == 'carousel' and block.settings.show_pagination_on_desktop }}"
+      "visible_if": "{{ block.settings.layout_type == 'carousel' and block.settings.show_pagination_on_desktop or block.settings.layout_type_mobile == 'carousel' and block.settings.show_pagination_on_mobile }}"
     },
     {
       "type": "checkbox",
