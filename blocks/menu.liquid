@@ -45,6 +45,22 @@
   unless heading_tag == 'div' or heading_tag == 'h1' or heading_tag == 'h2' or heading_tag == 'h3' or heading_tag == 'h4' or heading_tag == 'h5' or heading_tag == 'h6'
     assign heading_tag = 'h2'
   endunless
+  if heading_size == 'display'
+    case heading_tag
+      when 'h1'
+        assign heading_size = 'display'
+      when 'h3'
+        assign heading_size = 'lg'
+      when 'h4'
+        assign heading_size = 'md'
+      when 'h5'
+        assign heading_size = 'sm'
+      when 'h6'
+        assign heading_size = 'xs'
+      else
+        assign heading_size = 'xl'
+    endcase
+  endif
 
   assign heading_color = block.settings.heading_color
   if heading_color == 'heading'
