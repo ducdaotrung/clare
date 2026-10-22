@@ -3128,7 +3128,8 @@
         "gallery_grid_J7zQFA": {
           "type": "gallery-grid",
           "settings": {
-            "columns_desktop": 5,
+            "layout": "carousel",
+            "columns_desktop": "5",
             "columns_mobile": "1",
             "gap": 16,
             "gap_mobile": 12,

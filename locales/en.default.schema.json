@@ -766,6 +766,10 @@
       "classic": "Classic",
       "stack": "Stack"
     },
+    "gallery_layout": {
+      "grid": "Grid",
+      "carousel": "Carousel"
+    },
     "hero_content_position": {
       "first": "First",
       "last": "Last"
